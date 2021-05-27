@@ -1,0 +1,20 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+\begin{document}
+
+		We prove that for $k=1,2..\dots 35$, there can be at most $k$ people who shook hands with exactly $36-k$ people.\\
+\textbf{Proof} We assume the contradiction. So there exists at least $k+1$ people who shook with $36-k$ people. Then these people have not shook hands among themselves. Then any one of them can shake hands with at most $36-(k+1)=35-k $ people. But they shook hands with exactly $36-k$ people. A contradiction. So there can be at most $k$ people who shook hands with exactly $36-k$ people.\\
+
+\bigskip
+Now there can be at most $1(36-1)+2(36-2)+...\dots... +35(36-1)=\sum_{k=1}^{35}k(36-k)$
+where
+\begin{eqnarray*}
+\sum_{k=1}^{35}k(36-k) & = \sum_{k=1}^{35}36k+\sum_{k=1}^{35}k^2\\
+                       & = 36\frac{35(35+1)}{2}+\frac{35.36.71}{6}\\
+                       & = 22680+14910\\
+                       & = 37590
+\end{eqnarray*}
+
+Now we prove that there exists a construction with exactly $37590$ handshakes.\\
+We divide the people into $9$ groups and number them from $1$ to $n$ so that the $i$th group contains exactly $i$ persons. Now let every person has shook hands with every except his group members. So every person from $i$th group has shook with exactly $36-i$ persons. Then the total number of handshakes is $1(36-1)+2(36-2)+...\dots... +35(36-1)=37590$ as desired.
+\end{document}

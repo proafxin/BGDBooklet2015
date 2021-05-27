@@ -1,0 +1,463 @@
+\documentclass{subfile}
+
+\begin{document}
+	\section{Geometry}
+	
+	\begin{problem}
+		A point $P$ is chosen in the interior of $\triangle ABC$ so that when lines are drawn through $P$ parallel to the sides of $\triangle ABC$, the resulting smaller triangles $t_{1},t_{2},t_{3}$ in $\triangle ABC$ have areas $4,9$ and $49$ respectively. Find the area of $\triangle ABC$.
+	\end{problem}
+	
+	\begin{solution}
+		Let the line through $P$ parallel to $BC$ intersect $AB,AC$ at $D,E$ respectively. Again, let the line through $P$ parallel to $CA$ intersect $BC,AB$ at $F,G$ respectively. Finally, let the line through $P$ parallel to $AB$ intersect $BC,CA$ at $K,L$ respectively. Assume that $\triangle PKF=t_1, \triangle PEL=t_2, \triangle PDG=t_3$.\\
+		
+		Now, $\triangle PKF\sim \triangle LPE\sim \triangle GDP\sim \triangle ABC$, and $AGPL, BDPK, CEPF$ are all parallelograms.\\
+		Next, $\dfrac{EC}{LE}=\dfrac{PF}{LE}=\sqrt{\dfrac{(KPF)}{(PLE)}}=\sqrt{\dfrac{4}{9}}=\dfrac{2}{3}$. Similarly $\dfrac{AL}{LE}=\dfrac{7}{3}$.\\
+		So, 
+		    \begin{align*}
+			    \dfrac{AC}{LE}& =\dfrac{AL+LE+EC}{LE}\\
+		                   & =\dfrac{AL}{LE}+\dfrac{LE}{LE}+\dfrac{EC}{LE}\\
+		                   & =4
+		    \end{align*}
+
+		So $\dfrac{(ABC)}{(LPE)}=\left(\dfrac{AC}{LE}\right)^2=16$ which implies $(ABC)=144$. 
+	\end{solution}
+	
+	
+	\begin{problem}
+		A convex hexagon $ABCDEF$ is inscribed in a circle such that $AB=CD=EF$ and diagonals $AD,BE$ and $CF$ are concurrent. Let $P$ be the intersection of $AD$ and $CE$. prove that,
+		\[\dfrac{CP}{PE}=\left(\dfrac{AC}{CE}\right)^2\]
+	\end{problem}
+	
+	\begin{solution}
+		Let $Q$ be the concurrency point of the diagonals $Ad,BE,CF$.
+			\begin{lemma}\label{lem:twosin}
+				In $\Delta ABC$, if $P$ is on $BC$ then
+					\begin{align*}
+						\dfrac{BP}{PC} & = \dfrac{AB\angle BAP}{AC\angle PAC}
+					\end{align*}
+			\end{lemma}
+		We can prove it using sine law on triangles $\Delta ABP$ and $\Delta ACP$. Now, note that according to lemma \eqref{lem:twosin}
+			\begin{align*}
+				\dfrac{CP}{PE} &=\dfrac{CA\cdot \sin \angle CAD}{BF\cdot \sin \angle DAE}
+			\end{align*}
+		Next, since $AB=EF$, $ABEF$ must be an isosceles trapezoid, which means $AE=BF$.Similarly, $DF=CE$. Now,
+			\begin{align*}
+			    \dfrac{CE}{BF} & =\dfrac{CQ}{DQ}\\
+			                   & =\dfrac{CQ}{DQ}\cdot \dfrac{DQ}{BQ}\\
+			                   & =\dfrac{CQ}{DQ}\cdot \dfrac{DE}{AB}\\
+			                   & =\dfrac{CQ}{DQ}\cdot \dfrac{DE}{CD}\\
+			                   & =\dfrac{CA}{DF}\cdot \dfrac{\sin \angle CAD}{\sin \angle DAE}\\
+			                   & =\dfrac{CA}{CE}\cdot \dfrac{\sin \angle CAD}{\sin \angle DAE}
+		   \end{align*}
+		From the previous relations we have
+			\begin{align*}
+				\dfrac{CP}{PE}& =\dfrac{CA\cdot \sin \angle CAD}{BF\cdot \sin \angle DAE}\\
+							  & =\dfrac{CA}{CE}\cdot \dfrac{CE}{BF}\cdot \dfrac{\sin \angle CAD}{\sin \angle DAE}\\
+							  & =\left(\dfrac{CA}{CE}\right)^{2}
+			\end{align*}
+	\end{solution}
+	
+	
+	\begin{problem}
+		Let $ABCD$ be a convex quadrilateral such that diagonals $AC$ and $BD$ intersect at right angles, and let $E$ be their intersection. Prove that the reflections of $E$ across $AB,BC,CD,DA$ are concyclic. 
+	\end{problem}
+	
+	
+	\begin{solution}
+		Let the reflections of $E$ across $AB,BC,CD,DE$ be $P,Q,R,S$ respectively. Now, $AP=AE=AS$, i.e., $A$ is the circumcenter of $\triangle PSE$. So, $\angle SPE=\frac{1}{2}\angle SAE=\angle DAE$. Similarly, $\angle EPQ=\angle EBC, \angle ERQ=\angle ECB, \angle ERS=\angle EDA$. 
+		So
+		\begin{align*}
+		    \angle SPQ+\angle SRQ & =\angle SPE+\angle EPQ+\angle ERQ+\angle ERS\\
+		                          & =\angle DAE+\angle EBC+\angle ECB+\angle EDA\\ 
+		                          & =180^{\circ}-\angle AED+180^{\circ}-\angle BEC\\
+		                          & =180^{\circ}
+        \end{align*}
+	since $\angle AED=\angle BEC=90^{\circ}$. So $PQRS$ is cyclic.
+	\end{solution}
+	
+	
+	\begin{problem}
+		Let $O$ be the circumcenter of a triangle $\triangle ABC$ and let $\ell$ be the line going through the midpoint of the side $BC$ and which is perpendicular to the bisector of $\angle BAC$. Find the value of $\angle BAC$ if the line $\ell$ goes through the midpoint of the line segment $AO$.
+	\end{problem}
+	
+	\begin{solution}
+		There are two parts in this solution, actually. The first part is to prove that $\angle BAC$ is obtuse. The second part is using this information to get the correct figure and evaluate the desired angle. 
+		
+		For the first part, note that unless $\angle BAC$ is obtuse, the line $\ell$ can't intersect the segment $AO$. 
+		
+		For the second part, let $M,L$ be the midpoints of $BC,AO$ respectively. Then $ML$ is the line $\ell$. Again, let $A'$ be the midpoint of arc $BC$ that does not contain $A$. Then $AA'$ is the bisector of $\angle BAC$. Let $N$ be the mispoint of $AA'$. And let $ML$ intersect $AA'$ at $K$. So, $MK\perp AA',ON\perp AA'$.
+		
+		Now, clearly $L$ is the center of $\odot AON$. So, $LA=LN$. But $LK\perp AN$. So $AK=KN$. This means $KL\parallel ON\Rightarrow LM\parallel NO$. Again, $\angle LNA=\angle LAN=\angle OAA'=\angle OA'A\Rightarrow LN\parallel MO$. So $LMON$ is a parallelllogram. Now, $OM=NL=LA=\frac{1}{2}OA=\frac{1}{2}OC$.
+		
+		Now, in $\triangle OCM$, $\angle OMC=90^{\circ}$ and $OM=\frac{1}{2}OC$. From these, it is an easy drill to prove that $\angle OCM=30^{\circ}$. A little angle chase from there yields $\angle BAC=120^{\circ}$. 
+	\end{solution}
+	
+	
+	
+	\begin{problem}
+		\textbf{An old IMO problem:} A triangle $\triangle A_{1}A_{2}A_{3}$ and a point $P_{0}$ are given in the plane. We define
+		
+		\begin{center} $A_{s}=A_{s-3} \forall s\geq 4$ \end{center}
+		
+		We construct a sequence of points $P_{1},P_{2},...$ such that $P_{k+1}$ is the image of $P_{k}$ under rotation with center $A_{k+1}$ through an angle $120$ degree clockwise (for $k=0,1,2,...$).
+		
+		Prove that if $P_{1986}=P_{0}$, then the triangle $\triangle A_{1}A_{2}A_{3}$ is equilateral.
+	\end{problem}
+		
+	\begin{solution}
+	    A composition of three $ 120$ rotations is a rotation of $ 120 + 120 + 120 = 360$, i.e. a translation. Thus, $ \vec{P_0 P_3} = \vec{P_3 P_6} = \dots = \vec {P_{1983} P_{1986}}$. But $ P_0 = P_{1986}$, so the vector is null and $ P_0 = P_3 = \dots = P_{1986}$. Since $ P_0$ had no restrictions, we can say that any point in the plane gets mapped to itself after the three rotations. In particular, let's examine the behavior of $ A_0$. After the first rotation, $ A_0$ remains $ A_0$. After the second, it gets mapped to some point $ B$. Finally, by our previous result, the third rotation takes $ B$ to $ A_0$ again. Now noting that $ \angle A_0A_2B = \angle B A_1 A_0 = 120$, and that $ BA_2 = A_2 A_0$ and $ BA_1 = A_1 A_0$, it is easy to deduce that $ A_0A_1A_2$ is equilateral.
+	\end{solution}	
+
+	\newpage
+
+		
+		\section{Number Theory}
+		
+		\begin{problem}[Masum Billal]
+			An integer is called square-free if it doesn't have any divisor that is a perfect square greater than $1$. Prove that $a^{a-1}-1$ is never square-free for $a>2$.
+		\end{problem}
+		
+		\begin{solution}[\bf First]
+			\textit{Lifting the Exponent Lemma} totally kills this problem.
+			
+			\begin{lemma}[Lifting the Exponent Lemma(LTE)]
+				If $p$ is an odd prime divisor of $x-y$ where $\gcd(x,y)=1$, then \[\nu_p(x^n-y^n)=\nu_p(x-y)+\nu_p(n)\]
+			\end{lemma}
+			
+			See \cite{amir} for details on this topic. Assume $p$ is a prime divisor of $a-1$. Then, by the lemma,
+			\begin{eqnarray*}
+				\nu_p(a^{a-1}-1) & = & \nu_p(a-1)+\nu_p(a-1)\\
+				& = & 2\nu_p(a-1)\\
+				&\geq&2
+			\end{eqnarray*}
+			Therefore, $p^2|a^{a-1}-1$ and it's not square-free. We are left with the case $p=2$. It is easy so we will leave it to the readers.
+		\end{solution}
+		
+		\begin{solution}[\bf Second]
+			This is a better solution that uses nothing.
+			\[a^{a-1}-1=(a-1)(a^{a-2}+\ldots+a+1)\]
+			Let $m=a-1$. Then, $a\equiv1\pmod m$ and
+			\begin{eqnarray*}
+				a^{a-2}+\ldots+a+1  &\equiv& 1^{a-2}+\ldots+1+1\pmod m\\
+				&\equiv&m\equiv0\pmod m
+			\end{eqnarray*}
+			Therefore, $a^{a-1}-1$ is divisible by $m^2$.
+		\end{solution}
+		
+		\begin{note}
+			The second solution also provides a stronger claim.
+		\end{note}
+		
+		\begin{problem}
+			Determine if $2^{2015}+3^{2015}+4^{2015}+5^{2015}$ is a prime.
+		\end{problem}
+		
+		\begin{solution}
+			Well, this was a problem so everyone solves at least two(paired with problem \eqref{e2}). No solution provided for this one.
+		\end{solution}
+		
+		\begin{problem}
+			For a prime $p>3$, prove that $\binom{2p-1}{p-1}-1$ is divisible by $p^3$.
+		\end{problem}
+		
+		\begin{solution}
+			\begin{theorem}[Wolstenholme's Theorem]
+				For a prime $p>3$, \[\binom{ap}{bp}\equiv\binom{a}{b}\pmod {p^3}\]
+			\end{theorem}
+			Set $a=2,b=1$. We have, \[\binom{2p}{2}\equiv\binom{2}{1}\equiv2\pmod {p^3}\]
+			Remember that, $\binom{n}{k}=\dfrac{n}{k}\binom{n-1}{k-1}$, so \[\binom{2p}{p}=2\binom{2p-1}{p-1}\]
+			Therefore, $p^3$ divides $2\binom{2p-1}{p-1}-2=2\left(\binom{2p-1}{p-1}-1\right)$. Since $(p^3,2)=1$, we can say $p^3$ divides $\binom{2p-1}{p-1}-1$.
+		\end{solution}
+		
+		\begin{problem}\label{e2}
+			For integers $a,b$, prove that $a^pb-ab^p$ is divisible by $p$.
+		\end{problem}
+		
+		\begin{solution}
+			\begin{theorem}[Fermat's Little Theorem]
+				For any prime $p$ and an integer $a$, $p$ divides $a^p-a$. Particularly, if $p$ doesn't divide $a$ i.e. $(a,p)=1$, 
+				\[a^{p-1}\equiv1\pmod p\]
+			\end{theorem}
+			Write $a^pb-ab^p=ab(a^{p-1}-b^{p-1})$. If one of $a$ or $b$ is divisible by $p$, we are done. If neither of them is divisible by $p$,
+			\[a^{p-1}\equiv1\equiv b^{p-1}\pmod p\]
+			Thus, $p$ divides $a^{p-1}-b^{p-1}$.
+		\end{solution}
+		
+		\begin{problem}[Masum Billal]
+			Find the number of positive integers $d$ so that $d$ divides $a^n-a$ for all integer $a$ where $n$ is a fixed natural number.
+		\end{problem}
+		
+		\begin{solution}
+			Let's assume $n>1$. 
+			
+			\begin{lemma}
+				$d$ is square-free.
+			\end{lemma}
+			
+			\begin{proof}
+				Let $p$ be a prime so that $p^2$ divides $d$. Then setting $a=p$, we get $p^2|p^n-p$ or $p^2|p$, which is a contradiction. Thus, no square of a prime divides $d$ i.e. $d$ is square-free.
+			\end{proof}
+			
+			\begin{lemma}
+				If $n$ has $k$ distinct prime factors, it has at least $2^k$ divisors.
+			\end{lemma}
+			
+			\begin{proof}
+				Let $n=\prod\limits_{i=1}^{k}p_i^{e_i}$. Then since $e_i\geq1$,
+				\begin{eqnarray*}
+					\tau(n) & = & \prod\limits_{i=1}^{k}(e_i+1)\\
+					&\geq& \prod_{i=1}^{k}2\\
+					& = & 2^k
+				\end{eqnarray*}
+			\end{proof}
+			
+			\begin{theorem}
+				For a prime $p$, there are $\t (p)$ primitive roots. In particular, a prime $p$ has a primitive root.
+			\end{theorem}
+			
+			\begin{theorem}\label{ord}
+				If $h=\ord_n(a)$ and $n$ divides $a^k-1$, then $h$ divides $k$.
+			\end{theorem}
+			
+			\begin{lemma}
+				$p-1$ divides $n-1$.
+			\end{lemma}
+			
+			\begin{proof}
+				Without loss of generality, $p$ must divide $a^{n-1}-1$ for integer $(a,p)=1$. Since we are free to choose $a$, we choose a primitive root $g$ of $p$. Then $p$ divides $g^{n-1}-1$ and $p$ divides $g^{p-1}-1$. Because $\ord_p(g)=p-1$, we have by theorem \eqref{ord} that $p-1$ divides $n-1$.
+			\end{proof}
+			Finally, notice that, we only need to find the largest $d$ such that which satisfies this property since other such integers would be divisors of the max $d$. From the lemma above, such $d$ is square-free and has prime factors $p$ for which $p-1$ divides $n-1$. Therefore, if
+				\begin{align*}
+					l & = \sum_{\substack{p-1|n-1}}^{}1
+				\end{align*}
+			and $p_1,\cdots,p_l$ are the primes such that $p_i-1|n-1$ then $d=p_1\cdots p_l$. By the first lemma, $d$ has $2^l$ divisors.
+			
+		\end{solution}
+		
+		\begin{note}
+			The function $C(n)=\sum_{\substack{p-1|n-1}}^{}1$ is very interesting. You can study on it if you are intrigued.
+		\end{note}
+		
+		\begin{problem}[Masum Billal]
+			For a positive real number $c>0$, call a positive integer $n$, $c-good$ if for all positive integer $m<n$, $\dfrac mn$ can be written as \[\dfrac mn=\dfrac{a_0}{b_0}+\ldots+\dfrac{a_k}{b_k}\]
+			for some non-negative integers $k,a_0,...,a_k,b_0,...,b_k$ with $k<\dfrac nc, 2b_k< n$ and $0\leq a_i< \min(b_j),0\leq j<k$.
+			Show that, for any positive real $c$ there are infinite $c-good$ numbers.
+		\end{problem}
+		
+		\begin{solution}
+			Consider a prime $p\geq3$. Then any number can be written in $p$-base as
+			\[m=a_kp^k+\ldots+a_1p+a_0\]
+			where $0\leq a_i\leq p-1$Therefore, if $n=p^r$ with $r>k$, \[\dfrac{m}{n}=\dfrac{a_k}{p^{r-k}}+\ldots+\dfrac{a_1}{p^{r-1}}+\dfrac{a_0}{p^r}\]
+			$a_i<p\leq \min(b_j)=p^{r-k}$, $2p^{r-k}<p^r$ and $k\leq \log_p{m}<\log_p{n}<\dfrac{n}{c}$ since $n$ can be arbitrary large but $c$ is fixed. Fixing $c$, since we can choose any odd prime, we have infinite such $c$-good number.
+		\end{solution}
+		
+		\begin{note}
+			There was one more problem. But I decided to omit it since it was more like an analytic number theory problem than an elementary one.
+		\end{note}
+		
+		\section{Combinatorics}
+		
+		\begin{problem}
+			In a picnic, let there be $1^2$ student from Class One, $2^2$ students from Class Two, $3^2$ students from Class Three, $4^2$ students from Class Four and $5^2$ students from Class Five. A teacher is picking students for a game at random. How many students must he pick to make sure that there are at least $10$ students from the same class?
+		\end{problem}
+		
+		\begin{solution}
+		    Each of class one, two and three contains less than $10$ students and $14$ students in total. Now if $19$ students are taken from class three and four, then by pigeonhole principle one of the chosen classes will contain at least $10$ students. So taking $14+19=33$ ensures at least $10$ students in some class.
+            
+            Again if we choose $1$ student from class one, $4$ student from class two, $9$ student from each of class three, four and five, then there will be $32$ students in total with less than $10$ students from each class. So taking $32$ students is not enough. So the answer is $33$.
+        \end{solution}
+
+		
+		\begin{problem}
+			In a party, there are $n$ people and their shoes are in $n$ lockers. After the party, electricity went out and everyone forgot the number of locker his/her shoe was in. So they take the shoes randomly. What's the probability that all of them got their own shoes?
+		\end{problem}
+		
+		\begin{solution}
+		    This is a straightforward derangement problem. Derangement of $S=\{1,2,\cdots,n\}$ is the number of permutations of $S$ such that no element of $S$ appears in its original position. Let the $i$th person has taken the $\sigma(i)$th left shoe and $\pi(i)$th right shoe where $\sigma$ and $\pi$ are two permutations of $\{1,2,.........n\}$. Now for a fixed permutation $\sigma$, we can choose $\pi$ in $n!$ ways and exactly $D_n$ of them don't have any common point with $\sigma$ where $D_n$ denotes the derangement number of $n$ objects. So the probability that $\sigma$ and $\pi$ don't have any common point is $\dfrac{D_n}{n!}$. The probability remains the same for every choice of $\sigma$. So the probability is
+	            \begin{align*}
+	            	\dfrac{D_n}{n!} &= \dfrac{1}{0!}-\dfrac{1}{1!} + \dfrac{1}{2!}- \dfrac{1}{3!} + \cdots + (-1)^n \dfrac{1}{n!}
+	            \end{align*}
+		\end{solution}
+		
+		\begin{problem}
+			You have $n$ jewels, but exactly one of them is a fake. You know that the fake jewel is lighter. With a scale balance, how many measurements are sufficient to find the fake jewel?
+		\end{problem}
+		
+		\begin{solution}
+			We prove that for every $n$, if $ 3^k \geq n >3^{k-1}$ then we need to do at least $k$ measurements.\\
+            We use strong induction. The base case $n=2$ is trivial. Let it is true for every natural number less than $n$. Let $n=3^{k-1}+r$ where $0<r \leq 2.3^{k-1}$. If we put different number of jewels in the sides of the balance and the balance shows that the side with more jewels is heavier, nothing can be deduced from the result. So suppose in the first measurement, we have put $a$ jewels in the left pan, $a$ jewels in the right pan and $b$ jewels are left aside.
+            
+            Now $2a+b=n=3^{k-1}+r$. So at least one of $a$ and $b$ is grater or equal ot $\lceil\frac{n}{3}\rceil=\lceil\frac{3^{k-1}+r}{3}\rceil=3^{k-2}+q$ where $0<q \leq 2.3^{k-2}$ .
+            If the two sides don't have equal weight, the light one contains the fake jewel. Otherwise the rest $b$ jewels contain the fake one. So if we consider the worst case, we may get at least $3^{k-2}+q$ jewels containing the fake one and by our induction hypothesis, it will take at least $k-1$ measurements to find the fake jewel. So in total $(k-1)+1=k$ measurements. \\
+            
+            Now we prove that $k$ measurements are sufficient. We again apply induction.
+	            \begin{itemize}
+	            	\item If $n=3s+1$, then we take $s$ jewels in both side.
+	            	\item If $n=3s+2$ or $3s+3$, then we take $s+1$ jewels in both side. 
+	            \end{itemize}
+            In all $3$ cases, we can reduce the number of jewels containing the fake one to $s+1$. As $ 3^k \geq n >3^{k-1}$, we have $3^{k-1} \geq s+1 > 3^{k-2}$. Now we can do the rest by $k-1$ measurements. Therefore, we can do it using $k=\lceil\log_{3}n\rceil$  measurements.
+		\end{solution}
+		
+		\begin{problem}
+			There are $n$ ants on a $p$ meter rope, on which each walks on a $v m/s$ speed. It is known that 
+				\begin{itemize}
+					\item when two ants collide on the rope, they turn around and continue to move the way they came from at the same speed
+					\item when an ant reaches the end of a rope they fall off from it
+				\end{itemize}
+			Find the greatest amount of time after which every single ant must fall off the rope, and find
+			the arrangement for which that is possible.
+		\end{problem}
+		
+		\begin{solution}
+		    The key observation is that the problem doesn't change if we alter it as: when two ants moving in opposite directions meet, they simply pass through each other and continue moving at the same speed. Thus instead of rebounding, if the ants pass through each other, the only difference from the original problem is that the identities of the ants get exchanged, which is inconsequential. Now the statement is obvious – each ant is unaffected by the others, and so each ant will fall of the stick of length one unit in at most $p/v$ second.
+		\end{solution}
+		
+		\begin{problem}
+			We have $2015$ points in the plane such that any three are not collinear. Prove that there is a circle which contains $1007$ points in its interior and another $1007$ points in its exterior.
+		\end{problem}
+		
+		\begin{solution}
+			Let's say we have already found the circle and it has center $O$ and radius $R$. $1007$ points are strictly outside and $1007$ are inside, this means the other point must be on the boundary. This is quite useful, which tells us to consider the distances of the points from the center. Call the points $P_1,...P_{n}$ where $n=2015$. Without loss of generality, we can assume that $P_1008$ lies on the boundary and the points $OP_1,...,OP_{1007}$ are inside the circle of radius $OP_{1008}$. Then $OP_{1009},...,OP_{2015}$ are outside the circle. If $OP_i$ is inside the circle then we must have $OP_i<OP_{1008}$, otherwise $OP_i>OP_{1008}$. This should tell you to sort the distances somehow. In other words, we need a construction for the center $O$ so that the distances of $P_i$ are sorted. We are done if we can find $O$ so that all the distances are distinct. In order to find such a construction, we can think the opposite. When will two distances be equal? $OP_i=OP_j$ is possible only if $O$ lies on the perpendicular bisector of $P_iP_j$. Since we want all the distances distinct, we need to take $O$ so that it doesn't lie on any perpendicular bisector of $P_iP_j$ for all $i,j$. And obviously there are infinite such points. Now, we can sort the points according to distances i.e. $OP_1<OP_2<...<OP_{2015}$. Therefore, we make $O$ center and draw a circle with radius $OP_{1008}$ and we are done.
+		\end{solution}
+		
+		\begin{problem}
+			Can you choose $1983$ pairwise distinct integers each less than $100000$ such that no three are in an arithmetic progression?
+		\end{problem}
+		
+		\begin{solution}
+		    We consider the set $S$ so that for $x\in S$, we have $x\leq 100000$ and the base-$3$ representation of $x$ consists of only $0$ and $1$. We prove that $S$ doesn't contain $3$ numbers in arithmetical progression.\\
+
+            We assume the contrary. So there exists $a,b,c\in S$ so that $a+b=2c$ and $a,b,c$ are pairwise different.\\
+            
+            Let $a=\overline{a_ka_{k-1}...........a_1}_{(3)}$ ,$b=\overline{b_kb_{k-1}...........b_1}_{(3)}$ and $c=\overline{c_kc_{k-1}...........c_1}_{(3)}$
+            
+            Then $a+b$ has $a_i+b_i$ as their $i$th digit because $a_i+b_i\leq 2$ for all $i$. As $a\neq b$, there exists some $j$ for which $a_j\neq b_j$. Hence $a_j+b_j=1$. But all of the digits of $2c$ are either $0$ or $2$, so it's $i$th digit cannot be $1$. So $S$ doesn't contain $3$ numbers in arithmetical progression.\\
+            
+            Now for every $n$, there are exactly $2^n$ numbers which are less or equal to $3^n$ and have digits only $0$ and $1$.\\
+            
+            
+            As $3^{12}\leq 100000$, $S$ contains more than $2^{12}$ digits. As $2^{12}>1007$,we are done.
+		\end{solution}
+		
+		\begin{problem}
+			Show that for $n>2$, there is a set of $2^{n-1}$ points in the plane, no three collinear such that no $2$n form a convex $2n$-gon.
+		\end{problem}
+		
+		\begin{solution}
+            Let $S_2$ be $\{(0,0), (1,1)\}$. Given Sn, take $T_n = \{(x+2^{n-1},y+M_{n}):(x,y)\in S_{n}\}$, where $M_n$ is chosen sufficiently large that the gradient of any segment joining a point of $S_n$ to a point of $T_n$ is greater than that of any segment joining two points of $S_n$. Then put $S_{n+1} = S_n\cup T_n$.
+
+            Clearly $S_{n}$ has $2n-1$ points. The next step is to show that no three are collinear. Suppose not. Then take $k$ to be the smallest $n$ such that $S_k$ has $3$ collinear points. They cannot all be in $S_{k-1}$. Nor can they all be in $T_{k-1}$, because then the corresponding points in $S_{k-1}$ would also be collinear. So we may assume that $P$ is in $S_{k-1}$ and $Q$ in $T_{k-1}$. But now if $R$ is in $S_{k-1}$, then the gradient of $PQ$ exceeds that of $PR$. Contradiction. Similarly, if $R$ is in $T_{k-1}$, then the gradient of $QR$ equals that of the two corresponding points in $S_{k-1}$ and is therefore less than that of $PQ$. Contradiction.
+            
+            Finally, we have to show that $S_{n}$ does not contain a convex $2n$-gon. Suppose it does. Let $k$ be the smallest $n$ such that $S_{k}$ contains a convex $2k$-gon. Let $P$ be the vertex of the $2k$-gon with the smallest $x$-coordinate and $Q$ be the vertex with the largest. We must have $P\in S_{k-1}, Q\in T_{k-1}$, otherwise all vertices would be in $S_{k-1}$ or all vertices would be in $T_{k-1}$, contradicting the minimality of $k$. Now there must be at least $(k-1)$ other vertices below the line $PQ$, or at least $(k-1)$ above it. Suppose there are at least $(k-1)$ below it. Take them to be $P=P_0, P_1, ... , P_k=Q$, in order of increasing $x$-coordinate. These points must form a convex polygon, so gradiant of $P_{i-1}P_{i} <$ gradiant of $P_{i}P_{i+1}$. But the greatest gradient must occur as we move from $S_{k-1}$ to $T_{k-1}$, so all but $Q$ must belong to $S_{k-1}$. Thus we have $k$ vertices in $S_{k-1}$ with increasing $x$-coordinate and all lying below the line joining the first and the last. We can now repeat the argument. Eventually, we get $3$ vertices in $S_{2}$. Contradiction.
+            
+            The case were we have k-1 vertices above the line $PQ$ is similar. By convexity, all but $P$ must lie in $T_{k-1}$. We now take their translates in $S_{k-1}$ and repeat the argument, getting the same contradiction as before.
+		\end{solution}
+		
+		\newpage
+		
+		\section{Mock Exam $1$}
+		\begin{problem}
+		    Let $x, y$ be integers and $p$ be a prime for which
+		    \[ x^2-3xy+p^2y^2=12p \]
+		    Find all triples $(x,y,p)$.
+		\end{problem}
+		
+		\begin{solution}
+		    The equation can be rewritten as $x(x - 3y) = p(12 - py^2)$.
+            If $p = xd$ then $d(pd - 3y) = 12 - py^2$ $\implies$ $p(d^2+y^2) = 3(4 + yd)$.
+            If $p = 3$ then $d^2 - yd + y^2 - 4 = 0$ so we get that $16 - 3y^2$ is a perfect square so $y = 2$ or $y = -2$ then $d \in {0,2}$ so $(x,y,p) \in \{(0,2,3),(6,2,3),(0,-2,3),(6,-2,3)\}$.
+            If $p$ isn't $3$ then $d,y \equiv 0 ($ $mod$ $3)$. then $4 \equiv 0 (mod$ $3)$,contradiction.
+            We approach similarly when $x - 3y = pd$.
+        \end{solution}
+        
+        \begin{problem}
+            In a convex quadrilateral $ABCD$, the diagonals are perpendicular to each other and they intersect at $E$. Let $P$ be a point on the side $AD$ which is different from $A$ such that $PE=EC.$ The circumcircle of triangle $BCD$ intersects the side $AD$ at $Q$ where $Q$ is also different from $A$. The circle, passing through $A$ and tangent to line $EP$ at $P$, intersects the line segment $AC$ at $R$. If the points $B, R, Q$ are concurrent then show that $\angle BCD=90^{\circ}$.
+        \end{problem}
+        
+        \begin{solution}
+            Let $\odot ARD$ meet $BD$ at $F$.
+            The power of $E$ with respect to $(ARFD)$ is $ER \cdot AE = EF \cdot ED$.
+            The power of $E$ with respect to $(ARP)$ is $ER\cdot AE = EP ^2 = EC^2$.
+            So $EF \cdot ED = EC^2$ yields that $\odot FCD$ is tangent to $CE$ or in other words $\angle ECF = \angle EDC$.
+            Also we have $\angle ADE = \angle ERF$.
+            Since $\angle QDB + \angle BDC = \angle FRC + \angle RCF$, we have $\angle RBC = \angle RFC$.
+            This yields $BCFR$ is deltoid.
+            (If you cannot see this easily, take reflection of $B$ with respect to $RC$. Call it $B'$ . Since $\angle RBC = \angle RB'C = \angle RFC$, $B'$ is on $BD$, $F=B'$.)
+            So $\angle BCR = \angle RCF = \angle BDC$. Since $\angle BEC = 90^\circ$, $\angle BCD = 90^\circ$.
+		\end{solution}
+		
+		\begin{problem}
+		    We want to place $2012$ pockets, including variously colored balls, into $k$ boxes such that
+
+            i) For any box, all pockets in this box must include a ball with the same color
+            or
+            ii) For any box, all pockets in this box must include a ball having a color which is not included in any other pocket in this box
+            
+            Find the smallest value of $k$ for which we can always do this placement whatever the number of balls in the pockets and whatever the colors of balls.
+        \end{problem}
+        
+        \begin{solution}
+            The answer is $62$.
+            We can assume no pocket has two same color ball. It does not change the problem at all.
+            We will use induction, assume the answer is $k$ for $\dfrac{k(k+1)}{2}\leq n <\dfrac{(k+1)(k+2)}{2}$. Let $1,2,…,s$ be different colors. Let $a_1,a_2, ... ,a_s$ be number of balls of different colors. Assume $a_1\geq a_2\geq ... \geq a_s$.
+            If a pocket has color-$p$ ball, we will say this pocket is type-$p$.(A type-$p$ pocket can also type-$q$.)
+            If $a_1 \geq k+1$, we will put type-$1$ pockets into same box. Now we have $\dfrac{(k+1)(k+2)}{2}–a_1\leq \dfrac{k(k+1)}{2}$ and by induction we can put the other pockets into $(k-1)$ boxes. So assume $a_1<k+1$. Put all type-$1$ pockets in different boxes. Now start to put remaining type-$2$ pockets with (ii) statement. If we cannot put all type-$2$ pockets, this means $a_2\geq a_1$. Because if we cant add type-$2$ to a box, it means existing type-$1$ is also type-$2$, it means every box has color-$2$ ball. So we conclude we can place all type-$2$ pockets. Same strategy for type-$3$,...,type-$m$ and we are done.
+            The example for $62$:
+            $a_1 = 63, a_2 = 62,..., a_{59} = 5, a_{60} = 3, a_{61} = 2, a_{62} = 1$. (All pockets contain only one ball)
+            Proof: Assume we can place pockets into $61$ boxes. We have $63$ type-$1$ pocket by pigeonhole principle we have $2$ type-$1$ pocket in the same box. This box cannot contain another type pocket. After that we have $60$ boxes and $62$ type-$2$ pockets. Similarly we can find another box which only has type-$2$. Then we need at least 62 boxes, contradiction.
+        \end{solution}
+		\newpage
+		
+		
+		\section{Mock Exam $2$}
+		
+		\begin{problem}
+			Determine all triples of positive integers $(k,m,n)$ so that $2^k+3^m+1=6^n$.
+		\end{problem}
+		
+		\begin{solution}
+		    It is easy to observe that $a \ge 3,c \ge 3 \implies 8|2^a-6^c \implies 8|3^b+1$ which is impossible since all possible residues of $3^b$ modulo $8$ are $1,3$.
+
+            For $a \ge 3,c=2$ we have
+            $2^a+3^b=35 \implies (a,b)=(3,3),(5,1)$
+            
+            For $a \ge 3,c=1$ there's no solution.
+            
+            For $a=2$ there's no solution and for $a=1$ the only is $(1,1,1)$
+            
+            Thus $(a,b,c)=(1,1,1),(3,3,2),(5,1,2)$.
+		\end{solution}
+		
+		\begin{problem}
+			Let $\Gamma$ be the circumcircle of a triangle $\Delta ABC$. Let $\ell$ be a line tangent to $\Gamma$ at point $A$.Let $D, E$ be interior points of the sides $AB, AC$ respectively, which satisfy the condition $\dfrac{BD}{DA}=\dfrac{AE}{EC}$. Let $F, G$ be the two points of intersection of line $DE$ and circle $\Gamma$. Let $H$ be the	point of intersection of the line $\ell$ and the line parallel to $AC$ and going through point $D$. Let $I$ be the point of intersection of the line $\ell$ and the line parallel to $AB$ and going through $E$.
+			Prove that the four points $F, G, H, I$ lie on the circumference of a circle which is tangent to line $BC$.
+		\end{problem}
+		
+		\begin{solution}
+		    Let $HD \cap BC = P$. So, $\dfrac{BP}{PC}=\dfrac{BD}{DA}=\dfrac{AE}{EC} \implies EP \parallel AB \implies P \in EI$.
+            Now, $\measuredangle CPI = \measuredangle CBA = \measuredangle IAC \implies EI.EP = EA.EC = EF.EG \implies I \in \odot PFG$. Similarly, $H \in \odot PFG$.
+            $\therefore FGHIP$ cyclic. Now, $\measuredangle CPI = \measuredangle PBA = \measuredangle PHI \implies CP, i.e., BC$ touches $\odot FGHI$ at $P$.
+		\end{solution}
+		
+		\begin{problem}
+			Let $n$ be a positive integer. For every pair of students enrolled in a certain school having $n$ students, either the pair are mutual friends or not mutual friends. Let N be the smallest possible sum, a + b, of positive integers a and b satisfying the following two conditions concerning students in this school.
+			\begin{enumerate}
+				\item It is possible to divide students into a teams in such a way that any pair of students belonging to the same team are mutual friends
+				\item It is possible to divide students into b teams in such a a way that any pair of students belonging to the same team are not mutual friends.
+			\end{enumerate}
+			Assume that every student will belong to one and only one team when the students are divided into teams that satisfy the conditions above. A team may consist of only one student, in which case this team is assumed to satisfy both of the conditions: that any pair of students in this team are mutual friends; are not mutual friends. Determine in terms of $n$ the maximum
+			possible value that $N$ can take.
+		\end{problem}
+		
+		\begin{solution}
+		    We can prove by induction on $n$ that $N\leq n+1$. This is trivial for $n=1$. Consider a graph $G$ with $|V(G)|=n+1$, and a vertex $v\in V(G)$ with $\deg_G v = d$. Also consider the graph $G'= G - v$, with $|V(G')|=n$.
+
+            Say $a(G')>n-d$; then there cannot exist a vertex $v_i$ in each of the $a(G')$ cliques so that $vv_i$ is not an edge in $G$, since $\deg_{\overline{G}} v = n-d$. We can then add $v$ to one of these cliques, so $a(G) = a(G')$. Since we may take $\{v\}$ as an independent set, we have $b(G) \leq b(G') + 1$, and so $a(G) + b(G) \leq a(G') + b(G') + 1 \leq (n+1) + 1$ (by the induction step).
+            
+            Say $b(G')>d$; then there cannot exist a vertex $v_i$ in each of the $b(G')$ independent sets so that $vv_i$ is an edge in $G$, since $\deg_G v = d$. We can then add $v$ to one of these independent sets, so $b(G) = b(G')$. Since we may take $\{v\}$ as a clique, we have $a(G) \leq a(G') + 1$, and so $a(G) + b(G) \leq a(G') + b(G') + 1 \leq (n+1) + 1$ (by the induction step).
+            
+            We are left with $a(G')\leq n-d$ and $b(G')\leq d$, but then we may take $\{v\}$ as both a clique and an independent set, so we have $a(G) \leq a(G') + 1$ and $b(G) \leq b(G') + 1$, and so $a(G) + b(G) \leq a(G') + b(G') + 2 \leq n + 2 = (n+1) + 1$.
+            
+            Since easily it can be seen that for $G=K_n$ we have $a(G)=1$ and $b(G)=n$, therefore $N=n+1$, it follows this is the best bound, i.e. $\max N = n+1$.
+        \end{solution}
+\end{document}

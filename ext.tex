@@ -1,0 +1,599 @@
+\documentclass{subfile}
+
+\begin{document}
+
+	
+	\section{Exam One}
+	
+	\begin{problem}
+		Find the number of $k$ tuples $(a_1,...,a_k)$ with $1\leq a_i\leq n$ so that their greatest common divisor with $n$ is $1$ i.e. $(a_1,...,a_k,n)=1$.
+	\end{problem}
+	
+	\begin{solution}
+		We consider the case when $n=p^m$ for some prime $p$ and natural number $m$.\\
+		We call a $k-tuple$ $n$ good if it satisfies the given condition. Then if $\{a_1,a_2...a_{k}\}$ is not a good $k-tuple$, all of $a_1,a_2...a_{k}$ must be divisible by $p$. So there are $\frac{p^m}{p}=p^{m-1}$ choices for every $a_i$. So there are $p^{m-1}.p^{m-1}.........p^{m-1}=p^{k(m-1)}$ not good $k-tuples$. So the number of good $k-tuples$ is
+			\begin{align*}
+				(p^m)^k-p^{k(m-1)} & =p^{mk}(1-\frac{1}{p^k})
+			\end{align*}
+		Now we solve it for any general $n$. Let the answer is $f(n)$.
+		Let $d$ be any divisor of$n$. 
+		If $gcd(a_1,a_2...a_{k},n)=d$,
+			\begin{align*}
+				gcd\left(\frac{a_1}{d},......\frac{a_k}{d},\frac{n}{d}\right) & =1
+			\end{align*}
+		So there are exactly $f(\frac{n}{d})$ $k-tuples$ with $gcd(a_1,a_2...a_{k},n)=d$. On the other hand, the number of $k-tuples$ is $n^k$ in total. Therefore,
+			\begin{align*}
+				\sum_{d|n}\left(\frac{n}{d}\right)& =n^k
+			\end{align*}
+		Let $\mathcal{F}$ be the summation function of $f$. We have $\mathcal{F}(n)=n^k$ which is a multiplicative function. We use the following theorem.
+			\begin{theorem}[Reverse Multiplicativity Theorem]\slshape
+				If $F(n)=\sum\limits_{d|n}{}f(n)$ is the summation function of $f$, then $f$ is multiplicative if $F$ is multiplicative
+			\end{theorem}
+		Here $\mathcal{F}$ is the summation function of $f$. So $f$ must be a multiplicative function. Let $n=\prod\limits_{i=1}^{r}p_i^{e_i}$. Then 
+			\begin{align*}
+				f(n) & =f\left(\prod\limits_{i=1}^{r}p_i^{e_i}\right)\\
+				& =\prod\limits_{i=1}^{r}f(p_i^{e_i})\\
+				& =\prod\limits_{i=1}^{r}p^{e_ik}\left(1-\frac{1}{p_i^k}\right)\\
+				& =n^k\prod\limits_{i=1}^{r}\left(1-\frac{1}{p_i^k}\right)
+			\end{align*}
+		
+	\end{solution}
+	
+	\begin{problem}
+		Let $1\leq k\leq n$. Consider all sequences of positive integers with sum $n$. If the term $k$ appears $\mathcal{F}(n,k)$ times, find $\mathcal{F}(n,k)$ in terms of $n$ and $k$.
+	\end{problem}
+	\begin{solution}
+	    Let $X_n$ be the set of sequences with sum $n$. For a set $A$ of sequences, let $f(A)$ denote the total number of appearances of $k$'s in the elements of $A$. We have $\mathcal{F}(n,k)=f(X_n)$.\\
+	    Now we show that $X_n=2^{n-1}$. To prove this we consider $n$ points in a row.There are $n-1$ free spaces among them. So we can partition the $n$ points 
+	    in $2^{n-1}$ ways and there is a bijection between the set of sequences with sum $n$ and the set of partitions of $n$ points. So we have $X_n=2^{n-1}$.\\ 
+	    We partition $X_n$ into $n$ disjoint subsets $Y_{1,n},Y_{2,n}.....Y_{n,n}$ where every sequence in $Y_{i,n}$ has it's first element $i$.
+	    Let $(i,a_2,.......a_m)\in Y_{i,n}$ for some $1\leq i \leq n$.
+	    Then $(a_2,a_3........a_m)\in X_{n-i}$.
+	    Now $f(Y_{i,n})=f(X_{n-i})$ if $i\neq k$ and $f(Y_{i,n})=f(X_{n-i})+2^{n-i}$ if $i=k$.
+     	So 
+	\begin{equation*}
+	\begin{aligned}
+	f(X_n) & =f(Y_{1,n})+.......f(Y_{n,n})\\
+	& =f(X_{n-1})+......f(X_{n-k})+2^{n-k-1}+f(X_{n-k-1})+.........+f(X_{k,k})\\
+	& =f(X_{n-1})+............+f(X_{k,k})+2^{n-k-1}\\
+	\end{aligned}
+	\end{equation*}
+	Similarly $f(X_{n-1})=f(X_{n-2})+............+f(X_{k})+2^{n-k-2}$\\
+	Combining these two equations we get 
+		\begin{align*}
+			f(X_n) & = 2f(X_{n-1})+2^{n-k-1}+2^{n-k-2}\\
+			\frac{f(X_n)}{2^n} & =\frac{f(X_{n-1})}{2^{n-1}}+\frac{3}{2^{k+2}}
+		\end{align*}
+	Therefore by induction $$\frac{f(X_n)}{2^n}=\frac{f(X_k)}{2^k}+\frac{3(n-k)}{2^{k+2}}$$
+	$\therefore f(X_n)=2^{n-k-2}(3n-3k+4)$
+	\end{solution}
+	
+	\begin{problem}
+		A \textit{lattice point }is a point with integer coordinates. There is a block in every lattice point. Decide if there are $100$ lattice points $P_1,...,P_{100}$ so that 
+		\begin{itemize}
+			\item $P_i$ is visible to $P_{i+1}$ for $1\leq i<99$.
+			\item $P_1$ is visible to $P_{100}$.
+			\item $P_i$ is not visible to $P_j$ is $|j-i|>1$.
+		\end{itemize}
+	\end{problem}
+	
+	\begin{hint}
+		The following theorem is necessary, and it is a very useful one.
+			\begin{theorem}\label{thm:nolp}
+				The segment with endpoints $P(x,y)$ and $Q(a,b)$ has $(|x-a|,|y-b|)+1$ lattice points on it including $P$ and $Q$.
+			\end{theorem}
+		To prove it, we need the following facts.	
+			\begin{theorem}
+				A point $P(x,y)$ is visible from origin if and only if $(x,y)=1$.
+			\end{theorem}
+			
+			\begin{proof}
+				The if part is easy. If $P$ is visible then we must have $(x,y)=1$. If not, assume that $g=(x,y)$ and $g>1$. Consider the segment joining origin and $P$. Since $P$ is visible from $O$, there is no other lattice point between $O$ and $P$ by definition. But note that $(\frac{x}{g},\frac{y}{g})$ is a lattice point since $g$ divides both $x$ and $y$. Moreover, this point lies on $OP$, between $O$ and $P$, a contradiction.
+				
+				Let's prove the only if part now. Assume that $(x,y)=1$. We need to show there is no other lattice point on $OP$. For the sake of contradiction, assume that $Q(a,b)$ lies between $O$ and $P$. Then, the slope of $O$ and $Q$ is $\dfrac{b}{a}$. Again, the slope between $O$ and $P$ is $\dfrac{y}{x}$. According to theorem \eqref{thm:conslop}, we have $\dfrac{b}{a}=\dfrac{y}{x}$. We have, $ay=bx$ and $0<a<x,0<b<y$. The equation also says that $x|ya$. Since $(x,y)=1$, $x|a$, which gives us $a\geq x$, contradiction. So, there is no other lattice point on this segment.
+				
+			\end{proof}
+			
+			\begin{theorem}
+				Two points $P(x,y)$ and $Q(a,b)$ are visible from one another if and only if $(x-a,y-b)=1$.
+			\end{theorem}
+			
+			\begin{proof}
+				It actually follows from the theorem above. Just notice that, if we translate a segment to an integer distance, the number of lattice points and all properties of that line is preserved, except that it will be below or above the previous line since it has been translated. See \eqref{fig:1} for better understanding. So we can translate the point $Q(a,b)$ to $(0,0)$ without loss of generality. Then the translated new $P$ (which is now $A$)has coordinates $(x-a,y-b)$.\footnote{we should use absolute value here, but the result is same} After the translation, note that, $P$ is visible to $Q$ if and only if $A$ is visible to origin. Then using the previous theorem, we get that $A$ is visible from origin if and only if $(x-a,y-b)=1$.
+				
+			\end{proof}
+			
+			\begin{figure}[h]
+				\begin{tikzpicture}[scale=.6,line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]\label{fig:1}
+				\draw [color=cqcqcq,dash pattern=on 2pt off 2pt, xstep=1.0cm,ystep=1.0cm] (-4.3,-5.32) grid (18.7,6.3);
+				\draw[->,color=black] (-4.3,0.) -- (18.7,0.);
+				\foreach \x in {-4.,-3.,-2.,-1.,1.,2.,3.,4.,5.,6.,7.,8.,9.,10.,11.,12.,13.,14.,15.,16.,17.,18.}
+				\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+				\draw[->,color=black] (0.,-5.32) -- (0.,6.3);
+				\foreach \y in {-5.,-4.,-3.,-2.,-1.,1.,2.,3.,4.,5.,6.}
+				\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+				\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
+				\clip(-4.3,-5.32) rectangle (18.7,6.3);
+				\draw (1.,1.)-- (5.,3.);
+				\draw (0.,0.)-- (4.,2.);
+				\begin{scriptsize}
+				\draw [fill=qqqqff] (1.,1.) circle (1.5pt);
+				\draw[color=qqqqff] (1.14,1.28) node {$P$};
+				\draw [fill=qqqqff] (5.,3.) circle (1.5pt);
+				\draw[color=qqqqff] (5.14,3.28) node {$Q$};
+				\draw [fill=uuuuuu] (0.,0.) circle (1.5pt);
+				\draw[color=uuuuuu] (0.14,0.28) node {$O$};
+				\draw [fill=qqqqff] (4.,2.) circle (1.5pt);
+				\draw[color=qqqqff] (4.14,2.28) node {$A$};
+				\end{scriptsize}
+				\end{tikzpicture}
+				\caption{Translation preserves the number of lattice points on a segment, and the slope}
+			\end{figure}
+		Let's try to find the number of lattice points on a lattice segment.
+			\textbf{Problem} Find the number of lattice points the segment $PQ$ contains.
+			
+			
+			\begin{proof}[Proof of the main theorem]
+				First we will modify the figure as we need, kinda like the previous one. Let's translate $(x,y)$ to $(0,0)$, so $(a,b)$ is translated to $(x-a,y-b)=(m,n)$. Now, reflect this line with respect to $Y$ axis and then translate by $(m,0)$. The endpoints are $(0,n)$ and $(m,0)$ now but the number of lattice points is same. If $m=0$, the result is trivial since the only lattice points are $(0,0),\cdots,(0,n)$. Similarly, if $n=0$, the points are $(0,0),\cdots,(m,0)$. Both of them support our claim.
+				
+				Without loss of generality, we can assume $m,n>0$. Now, the number of lattice points on the segment is actually the number of nonnegative integer solutions that satisfies the equation of this segment:
+				\begin{eqnarray*}
+					\dfrac{x}{a}+\dfrac{y}{b} & = & 1\\
+					\iff bx+ay & = & ab
+				\end{eqnarray*}
+				Let $g=(a,b)$ and $a=gu,b=gv$ with $(u,v)=1$. Then
+				\begin{eqnarray*}
+					vx+uy & = & guv\\
+					v(gu-x) & = & uy\\
+					u(gv-y) & = & vx
+				\end{eqnarray*}
+				From these equations, we get $v$ divides $uy$. But $(u,v)=1$ so $v$ divides $y$. Similarly, $u$ divides $x$. Assume that $y=vk$ and $x=ul$, we have $k+l=g$. The number of nonnegative integer solutions to this equation is $g+1$. So, our claim is proved.
+				
+			\end{proof}
+		Now, try to use \textit{Chinese Remainder Theorem}.
+	\end{hint}
+	
+	\begin{note}
+		We can find $n$ such points explicitly as well. Coordinates of such points may have coordinates involving factorials.
+	\end{note}
+	
+	\begin{problem}
+		Two students $A$ and $B$ are playing the following game: Each of them writes down on a sheet of paper a positive integer and gives the sheet to the referee. The referee writes down on a blackboard two integers, one of which is the sum of the integers written by the players. After that, the referee asks student $A$," Can you tell the integer written by the other student?". If A answers "the referee puts the same question to student $ B$. If $B$ answers "no," the referee puts the question back to $A$, and so on. Assume that both students are intelligent and truthful. Prove that after a finite number of questions, one of the students will answer "yes."
+	\end{problem}
+	
+	\begin{solution}
+		Let the two numbers on blackboard be $ X<Y$. Also use $ A$ and $ B$ to represent the number from students A and B, respectively.
+			\begin{enumerate}[i.]
+				\item Suppose no "yes" in round 1. A knows $ B<X$, otherwise B would have said "yes" and solve $ A=Y-B$. Similarly B knows $ A<X$.
+				\item Suppose no "yes" in round 2. If B saw $ Y-B>=X$, he would have known $ A$ could not be $ Y-B$ since he knew $ A<X$ and then he would have said "yes' by solving $ A=X-B$. Hence, A knows $ Y-B<X$, or $ B>Y-X$. Similarly B knows $ A>Y-X$.
+				\item Suppose no "yes" in round 3. A knows $ B<2X-Y$. B knows $ A<2X-Y$.
+			\end{enumerate}
+		Each round without "yes" will tighten A's knowledge on B, also B's knowledge on A. Here knowledge means both upper bound and lower bound. Let us call the series of upper bounds $ x_n$ and lower bounds $ y_n$. We see that $ x_{n+1}=X-y_n$ and $ y_{n+1}=Y-x_n$. Obviously $ x_n$ are strictly decreasing and $ y_n$ are strictly increasing. So in a finite number of rounds, A or B have to answer yes. The stopping rule is one of the following four:
+			\begin{enumerate}[i.]
+				\item $ X-A<x_n\leq Y-A$, A say yes and solve $ B=X-A$.
+				\item $ X-A\leq y_n<Y-A$, A say yes and solve $ B=Y-A$.
+				\item $ X-B<x_n\leq Y-B$, B say yes and solve $ A=X-B$.
+				\item $ X-B\leq y_n<Y-B$, B say yes and solve $ A=Y-B$.
+			\end{enumerate}
+	\end{solution}
+	
+	\begin{problem}[Masum Billal]
+		Define two sequences $F_0=0,F_1=1,G_0=u,G_1=v$ and
+			\begin{align*}
+				F_n & = aF_{n-1}+bF_{n-2}\\
+				G_n & = aG_{n-1}+bG_{n-2}
+			\end{align*}
+		where $a,b,u,v$ are integers. Prove that,
+			\begin{align*}
+				S_{m,n} & = \dfrac{G_{m+n+1}-G_{m+1}F_{n+1}}{G_mF_n}
+			\end{align*}
+		is an integer independent of $m$ or $n$ for natural $m,n$.
+	\end{problem}
+	
+	\begin{hint}
+		\begin{align*}
+			G_{m+n+1} & = G_{m+1}F_{n+1}+bG_mF_n\\
+			G_{m+n}	  & = G_{m+1}F_n+bG_{m}F_{n-1}
+		\end{align*}
+		You can use induction or prove it combinatorially. The official solution was the combinatorial proof and that's what I had in mind when I posed this in the camp after some examples of \textbf{Counting In Two Ways}. But some campers used induction and it was quite easy with that approach. But if anyone is still interested in the combinatorial proof, they can consult with \cite{masum}. Be aware that there maybe typos or errors in the paper, but the result should be correct.
+	\end{hint}
+	
+	\newpage
+	
+	\section{Geometry}
+	\begin{problem}
+		(a) Let $ABC$ be an acute triangle with altitude $AD$ from $A$ to $BC$. Let $P$ be a point on $AD$. Line
+		$PB$ meets $AC$ at $E$ and $PC$ meets $AB$ at $F$. Suppose that $AEDF$ is the inscribed quadrilateral.
+		Prove that $PA/PD = (tanB + tanC)cot(A/2)$.\\
+		(b) Let $ABC$ be an acute triangle with orthocenter $H$ and $P$ be a point moving on line $AH$. The
+		line perpendicular to $AC$ at $C$ cuts $BP$ at $M$ and the line perpendicular to $AB$ at $B$ cuts $CP$
+		at $N$. Let $K$ be the projection of $A$ on line $MN$. Prove that the value of $\angle BKC + \angle MAN$
+		does not depend on the point $P$.
+	\end{problem}
+	\begin{solution}
+		(a)Let $EF\cap BC=K,AD\cap EF=M$ and $\bigodot AFDE\cap BC=L$.\\
+		Now using \textit{Ceva} and \textit{Menelau's} theorem in $\triangle ABC$,we can derive that $\frac{BK}{CK}=\frac{BD}{CD}$. So $B,C,D,K$ are in harmonic order. Then $AB,AC,AD,AK$ is a harmonic pencil and $EF$ imtersects these $4$ lines at $F,E,M,K$ resp. Which implies $F,E,M,K$ are in harmonic order.Again $\angle KDM=90^{\circ}$. So $\angle FDM=\angle EDM$.
+		AS $AFDLE$ is cyclic and $\angle ADL=90^{\circ}$ we have $\angle AFL=\angle AEL=90^{\circ}$ and $\angle FDA=\angle EDA \Rightarrow \angle ALF=\angle AEL$.
+		So $\angle FAL=\angle EAL$ and $\angle LAC=\frac{\angle A}{2}$.\\
+		Now, 
+			\begin{align*}
+				\frac{AE}{CE} &=\frac{LE.cot \frac{A}{2}}{LE.cot C}=\frac{cot\frac{A}{2}}{cot C}
+			\end{align*}
+			\begin{align*}
+				\frac{AP}{DP}   & =\frac{AB.sin \angle ABP}{DB.sin \angle DBP}\\
+								& =\frac{sin \angle ABE}{sin \angle CBE}\cdot\frac{AB}{BD}\\
+								& =\frac{\frac{AE}{CE}}{\frac{AB}{CB}}.sec B\\
+								& =\frac{AE}{CE}\cdot\frac{CB}{AB}\cdot sec B\\
+								& =\frac{cot\frac{A}{2}.sin A}{cot C.sin C}.sec B\\
+			\end{align*}
+		Therefore,
+			\begin{align*}
+				\frac{AP}{DP} & =\frac{A}{2}\cdot\frac{sin(B+C)}{cos B.cos C}\\
+							  & =\frac{A}{2}\cdot\frac{sin B.cos C+sin C.cos B}{cos B.cos C}\\ 
+							  & =\frac{A}{2}\cdot\frac{sin B.cos C+sin C.cos B}{cos B.cos C}\\
+							  & =\frac{A}{2}\cdot(tan B+tan C)
+			\end{align*}
+		
+		(b) Easy to see that $ABKN$ and $ACKM$ are cyclic. 
+		So 
+		\begin{equation*}
+		\begin{aligned}
+		\angle BKC & =\angle BKA +\angle CKA\\
+		& =\angle BNA +\angle CNA\\
+		& =90^{\circ}-\angle A+90^{\circ}-\angle A\\
+		& =180^{\circ}-2\angle A\\
+		\end{aligned}
+		\end{equation*}
+		So $\angle BKC+\angle MAN=180^{\circ}-2\angle A+\angle A=180^{\circ}-\angle A$
+		
+	\end{solution}
+	
+	\begin{problem}
+		Let $\triangle ABC$ be an acute triangle inscribed in circle $O$. Two points $P,Q$ lie on segments $AB,AC$ and
+		do not coincide with the vertices of $\triangle ABC$. The circumcircle of $\triangle APQ$ intersects $O$ at $M$ at a point
+		different from $A$. The point $N$ is the point symmetric to $M$ about the line $PQ$. Prove that\\
+		(a) $(AQP) + (BPN) + (CNQ) < (ABC)$ where $(X)$ is the area of triangle $X$.\\[12pt]
+		(b) If the point $N$ lies on $BC$, then $MN$ passes through a certain fixed point.
+	\end{problem}
+	\begin{solution}
+		(a) If $N$ lies inside $\triangle ABC$,then the result is obvious. So we assume $N$ is outside $\triangle ABC$.\\
+		Let $PQ\cap BC=T,\angle MTQ=\angle NTQ=x,\angle BTQ=y$ and $U,V$ be the feet of perpendicular from $N$ to $BC$ and $PQ$ resp.
+		Easy to see that $M,Q,N$ are collinear
+		Now $\angle MBP=\angle MBA=\angle MCA=\angle MCQ$ and $\angle MPB=180^{\circ}-\angle MPA=180^{\circ}-\angle MQA=\angle MQC$.
+		So $\triangle MPB \sim \triangle MQC$ which implies $\triangle MPQ \sim \triangle MBC$.
+		Again $M$ is the \textit{Miquel point} of $BPQC$. So $TCQM$ are cyclic with $\angle MTQ=x$ and $\angle CTQ=y$.\\ 
+		
+		\begin{align*}
+		    \therefore \dfrac{BC}{PQ}=\dfrac{MC}{MQ}=\dfrac{sin (x+y)}{sin x}
+		\end{align*}
+		And 
+		\begin{align*}
+		  \dfrac{NU}{NV}=\dfrac{sin (x-y)}{sin x}
+		 \end{align*}
+		
+		Now 
+		\begin{align*}
+		\frac{(NBC)}{(NPQ)} & =\frac{\frac{1}{2}NU.BC}{\frac{1}{2}.NV.PQ}\\
+		& =\frac{NU}{NV}\frac{BC}{PQ}\\
+		& =\frac{sin (x-y)}{sin x}\frac{sin (x+y)}{sin x}\\
+		& =\frac{cos 2y-cos 2x}{sin^2x}\\
+		& =\frac{cos 2y-1+2sin^2 x}{2sin^2 x}\\
+		& =\frac{cos 2y-1}{2sin^2 x}+1\\              
+		& \leq 1
+		\end{align*}
+
+		So
+		\begin{equation*}
+		\begin{aligned} 
+		(NBC)\leq (NPQ) & \Rightarrow (ABNC)-(NBP)-(NQC)-(APQ) \geq (NBC)\\
+		& \Rightarrow (NBP)+(NOC)+(APQ) \leq (ABNC)-(NBC)=(ABC)\\   
+		\end{aligned}
+		\end{equation*} 
+		
+		
+		(b) Let $MN\cap \bigodot ABC=D$.
+		As $N$ lies on $BC$, $\angle BTP=\angle MTP$. So $PB=PM=PN$.
+		Let $S$ be the projection of $P$ on $BC$.
+		Now $\angle BPS=\frac{\angle BPN}{2}=\angle BMN=\angle BMD=\angle BAD$.\\
+		So $AD\parallel PS$ which implies $AD\perp BC$. So $D$ is a fixed point and $MN$ passes through it.
+		\end{solution}   
+		
+		\begin{problem}
+			For a sequence $x_1 ,x_2 ,...,x_n$ of real numbers. We define the price as $max_{1≤i≤n}|x_1 + x_2 + ··· + x_i |$.
+			Given $n$ real numbers, Dada and Gadha want to arrange them into a sequence with a low price.
+			Diligent Dada checks all possible ways and finds the minimum possible price $D$. Greedy Gadha, on
+			the other hand, chooses $x_1$ such that $|x_1|$ is as small as possible; among the remaining numbers, he
+			chooses $x_2$ such that $|x_1 + x_2 |$ is as small as possible and so on. Thus in the $ith$ step, he chooses $x_i$
+			among the remaining numbers so as to minimize the value of $|x_1 + x_2 + ··· + x_i |$. In each step, if
+			several numbers provide the same value, Gadha chooses one at random. Finally, he gets a sequence
+			with price $G$.
+			Find the least possible constant $c$ such that for every positive integer $n$, for every collection of $n$
+			real numbers, and for every possible sequence that Gadha might obtain, the resulting values satisfy
+			$G \leq cD$.
+		\end{problem}
+		
+		
+		\begin{solution} We claim that $c = 2$. As mentioned above, us $1, -1, 2, -2$ as a construction. Now we will prove that $G \leq 2D$. Suppose George's sequence goes like $x_1, x_2, ..., x_n$. Now, since by definition, Dave's price is the minimum possible price, then $G \leq 2D$ iff $G \leq 2 \cdot \text{price for any permutation}$. And since $G \geq |x_1 + x_2 + \cdots + x_i|$ for any $1 \leq i \leq n$, we have that if for every $i$,
+			$$|x_1 + x_2 + \cdots + x_i| \le 2 \cdot \text{price for any permutation}$$then we're good to go.
+			
+			Lemma 1: If $|a| > 2|b|$ then $|a+b| > |b|$.
+			Proof: From triangle inequality $|a+b| + |-b| \ge |a|$ so $|a+b| \ge |a| - |b| > |b|$. $\Box$
+			Lemma 2: If $ab < 0$ then $|a+b| \le \max \{|a|, |b|\}$
+			Proof: WLOG $|a| < |b|$. So we have to show that $|a+b| \le |b|$. Squaring both sides yields $a^2 + 2ab + b^2 \le b^2$ iff $a^2 + 2ab \le 0$.
+			
+			Let our arbitrary permutation be $y_1, y_2, ..., y_n$ and let the price be $P = |y_1 + y_2 + \cdots + y_p|$ for some $1 \le p \le n$. Let $S_0 = 0$ and $S_i = y_1 + y_2 + \cdots + y_i$. First of all, we can prove that $|x_j| \le 2P$. Assume that $|x_j| > 2P$, and we have $y_i = x_j$ for some $i$. Then $$2P \ge |S_i| + |S_{i-1}| \ge |S_i - S_{i-1}| = |x_j|$$contradiction. Then we can use induction.
+			
+			Base case: We prove that $|x_1| \le 2P$. Already done.
+			Inductive step: Assume that $|x_1 + \cdots + x_k| \le 2P$. We want to prove that $|x_1 + \cdots + x_{k+1}| \le 2P$. Now let's not forget the definition of $G$. We certainly know that $|x_1 + x_2 + \cdots + x_{k+1}| \le |x_1 + x_2 + \cdots + x_k + x_j|$ for some $j > k$. Let's select an $x_j$ such that $x_j (x_1 + x_2 + \cdots + x_k) < 0$. Then we're done by lemma 2. If we cannot find an $x_j$ like that, that means $x_1 +x_2 + \cdots + x_k, x_{k+1}, x_{k+2}, ..., x_n$ all have the same sign. But that means
+			$$|x_1 + \cdots + x_{k+1}| \le |x_1 + \cdots + x_n| \le P \le 2P$$So by induction we are done.                   
+			
+		\end{solution}
+	
+	\newpage
+	
+	\section{Number Theory}
+	\begin{problem}
+		Let $n \ge 2$ be an integer, and let $A_n$ be the set \[A_n = \{2^n  - 2^k\mid k \in \mathbb{Z},\, 0 \le k < n\}.\] Determine the largest positive integer that cannot be written as the sum of one or more (not necessarily distinct) elements of $A_n$ .
+	\end{problem}
+	
+	\begin{solution}
+		Note that some odd $a$ can be written as the sum of some elements of $A_n$ iff so can be $a-2^n+1$ because $2^n-1$ is the only odd number in the set. Let $T_n$ be the answer for $n$. It follows that $T_n$ must be odd. Also, if $a$ can be written as the sum of some elements of $A_n$, $2a$ can be written as the sum of some elements of $A_{n+1}$. It follows that all numbers $ > 2T_n + 2^{n+1}-1$ can be written as the sum of some elements of $A_{n+1}$. I claim that $2T_n + 2^{n+1}-1$ cannot be written as the sum of some elements of $A_{n+1}$. Suppose $2T_n + 2^{n+1} - 1 = t (2^{n+1}-1) + q$, where the representation of $q$ doesn't contain $2^{n+1}-1$. Note that $q$ must be even, and thus, $t$ odd. This implies $T_n = \dfrac{t+1}{2} (2 (2^n - 2^{n-1}) + 2^n) + \dfrac{q}{2}$. Note that $\dfrac{q}{2}$ can be written as the sum of some elements of $A_n$ (just divide its representation in $A_{n+1}$ by 2), so $T_n$ can be written as the sum of some elements of $A_n$. Contradiction.
+		
+		Thus, we get that $T_{n+1}= 2 T_n + 2^{n+1}-1$. From here, we easily get that $T_n= (n-1)2^n+1$.
+		
+	\end{solution}
+	
+	
+	\begin{problem}
+		Determine all pairs $(x, y)$ of positive integers such that \[\sqrt[3]{7x^2-13xy+7y^2}=|x-y|+1.\]
+	\end{problem}
+	
+	\begin{solution}
+		let $x\ge y$ than we have
+		
+		$7x^2-13xy+7y^2=(x-y+1)^3$
+		
+		now let $x-y=a$ and hence we get
+		
+		$7a^2+x(x-a)=(a+1)^3\Longrightarrow x^2-ax-a^3+4a^2-3a-1=0$
+		
+		now as $x,y$ are positive int. so discriminant of above quadratic in $x$ must be perfect square.
+		
+		hence $D=4a^3-15a^2+12a+4=(4a+1)(a-2)^2=m^2$ so $4a+1=k^2$. and thus
+		
+		$x=\frac{k^2-1\pm k(k^2-9)}{8}$ and $y=x-\frac{k^2-1}{4} = \frac{k^2-1\pm k(k^2-9)}{8} - \frac{k^2-1}{4}$
+		
+		so we get family of solution for different values of $k$.
+		
+	\end{solution}
+	
+	\begin{problem} Let $n > 1$ be a given integer. Prove that infinitely many terms of the sequence $(a_k )_{k\ge 1}$, defined by \[a_k=\left\lfloor\frac{n^k}{k}\right\rfloor,\] are odd. (For a real number $x$, $\lfloor x\rfloor$ denotes the largest integer not exceeding $x$.)
+	\end{problem}
+	
+	\begin{solution} If $n$ is odd just choose $n^u$ for $u > 1$. It is easy to see that this produces odd integers.
+		
+		If $n-1$ is odd and $n-1 \neq 1$, consider a prime factor $p$ of $n-1$. Now consider $p^l$, where $l > 1$,
+		
+		\[\ \lfloor\frac{n^{p^l}}{p^l}\rfloor = \frac{n^{p^l}-1}{p^l} \]
+		
+		This is an integer because $v_p(n^{p^l}-1) = v_p(p^l) + v_p(n-1) \ge l$ by LTE, and it is obviously odd.
+		
+		Now consider $n = 2$. In this case, I claim $k = 3 \cdot 2^{2j}$, for arbitrary $j \neq 0$ works. Indeed
+		
+		\[\ \lfloor\frac{2^{3(2^{2j})}}{3(2^{2j})} \rfloor = \lfloor \frac{2^{3(2^{2j})-2j}}{3} \rfloor \].
+		
+		Observe that $3(2^{2j})-2j$ is always even, so then this quotient becomes
+		
+		\[ \frac{2^{3(2^{2j})-2j}-1}{3} \], which is clearly odd, so we are done.
+	\end{solution}
+	
+
+	
+	
+	\newpage
+	
+	\section{Combinatorics}
+	
+	\begin{problem}
+		There are $n$ cars, numbered from $1$ to $n$ and a row with $n$ parking spots, numbered from $1$ to $n$. Each car $i$ has its favorite parking spot $a_i$. When it is its time to park, it goes to its favorite parking spot. If it is free, it parks and if it is taken, it advances until the next free parking spot and parks there. If it cannot find a parking spot this way, it leaves and never
+		comes back. First car $1$ tries to park, then car number $2$ tries to park and so on until car number $n$. Find the number of lists of favorite spots $a_1, ..., a_n$ such that all the cars park. Note, different cars may have the same favorite spot.
+	\end{problem}
+	\begin{solution}
+	    We call an $n-tuple$ $(a_1,a_2.\dots a_n)$ good if all of the cars can park according to their choices where $1\leq a_i\leq n+1$ for all $i$.\\
+        
+        We consider $n+1$ parking spots around a circle and number them from $1$ to $n+1$ in counterclockeise direction. Suppose every car has a parking choice and if the parking spot is occupied by some other car when it's his   time to park, he moves counterclockwisely and parks in the next free spot. As the parking spots are situated sround a circle, all of the cars wil be able to park and there will be exacty one empty parking spot. \\
+        
+        Now we call an $n-tuple$ $k$ empty, if after parking, the $k$th spot is left empty where all the elements of the $n-tuple$ are integers between $1$ and $n+1$. Let $f(k)$ be the number of $k$ empty tuples. By symmetry,$f(k)=f(n+1)$ for all $k$ and $\sum_{i=1}^{n+1}f(i)=(n+1)^n$ which implies $f(n+1)=(n+1)^{n-1}$.\\
+        
+        Again if $(x_1,x_2.\dots x_n)$ is an $n+1$ empty tuple, obviously none of the $x_i$'s is equal to $n+1$. It's easy to see that $(x_1,x_2.\dots x_n)$ is an $n-tuple$ as the $(n+1)$th spot remains empty and none of the cars has to cross the $(n+1)$th spot to find their parking spot. Again all of the good $n-tuples$ are $(n+1)$ empty.\\
+        
+        So number of good $n-tuples=f(n+1)=(n+1)^{n-1}$.
+    \end{solution}
+	   
+	
+	\begin{problem}
+		Given a $2007$-gon, find the smallest integer $k$ such that among any $k$ vertices of the polygon
+		there are $4$ vertices with the property that the convex quadrilateral they form share $3$ sides
+		with the polygon.
+	\end{problem}
+	
+	\begin{solution}  Note that,among any $k$ vertices,there exist a convex quadrilateral sharing 3 sides with polygon if and only if it contains $3$ consecutive vertices of the polygon. Let $A_1A_2......A_{2007}$ be the polygon. If we take the vertices $A_i$ where $i\equiv 1,2,3(mod 4)$ and $1\leq 2006$,then there are $1505$ points in total with no $4$ consecutive points. So we must have $k\geq 1506$. We prove that $k=1506$.\\
+		Suppose we can choose a set $X$ of $1506$ points in such a way that there are no$4$ consecutive points. WLOG $X$ contains the point $A_1$.\\
+		Let $B_i=\{A_{4(i-1)+1},A_{4(i-1)+2},A_{4(i-1)+3},A_{4(i-1)+4}\}$ where $i=1,2,........501$.Then $X$ can contain at most $1503$ points from $A_1,A_2..........A_{2004}$ and all of $A_{2005},A_{2006},A_{2007}$ can't be in $X$ as $X$ contains $1$.So $|X|\leq 1505$,a contradiction.\\
+		
+		So the minimum value of $k$ is $1506$.
+	\end{solution}
+	
+	\begin{problem}
+		The entries of a $2 \times n$ matrix are positive real numbers. The sum of the numbers in each of the $n$ columns sum to $1$. Show that we can select one number in each column such that the sum of the selected numbers in each row is at most $\dfrac{n+1}{4}$.
+	\end{problem}
+	
+	\begin{solution}
+		
+		We denote the numbers from the first row by $a_1$, $a_2$, ..., $a_n$ in increasing order: $a_1\leq a_2\leq ...\leq a_n$. Then, the corresponding numbers from the second row are obviously $1-a_1$, $1-a_2$, ..., $1-a_n$.
+		
+		Now, let $k$ be the largest index satisfying $a_1+a_2+...+a_k\leq\dfrac{n+1}{4}$. Then, of course, $a_1+a_2+...+a_{k+1}>\dfrac{n+1}{4}$ (else, $k$ wouldn't be the largest index). Now, we are going to prove that $\left(1-a_{k+1}\right)+\left(1-a_{k+2}\right)+...+\left(1-a_n\right)\leq\dfrac{n+1}{4}$.
+		
+		In fact, the arithmetic mean of the numbers $a_{k+1}$, $a_{k+2}$, ..., $a_n$ is surely greater or equal than the number $a_{k+1}$ (the smallest of the numbers $a_{k+1}$, $a_{k+2}$, ..., $a_n$). In other words,
+		
+		$\dfrac{a_{k+1}+a_{k+2}+...+a_n}{n-k}\geq a_{k+1}$.
+		
+		On the other hand, the arithmetic mean of the numbers $a_1$, $a_2$, ..., $a_{k+1}$ is surely smaller or equal than the number $a_{k+1}$ (the greatest of the numbers $a_1$, $a_2$, ..., $a_{k+1}$). In other words,
+		
+		$\dfrac{a_1+a_2+...+a_{k+1}}{k+1}\leq a_{k+1}$.
+		
+		Thus,
+		
+		$\dfrac{a_{k+1}+a_{k+2}+...+a_n}{n-k}\geq a_{k+1} \geq \dfrac{a_1+a_2+...+a_{k+1}}{k+1}$,
+		
+		and thus
+		
+		$a_{k+1}+a_{k+2}+...+a_n\geq\left(n-k\right)\cdot\dfrac{a_1+a_2+...+a_{k+1}}{k+1} \geq \left(n-k\right)\cdot\dfrac{\left(\dfrac{n+1}{4}\right)}{k+1}$
+		
+		(since $n-k\geq 0$ and $a_1+a_2+...+a_{k+1}>\dfrac{n+1}{4}$). In other words,
+		
+		$a_{k+1}+a_{k+2}+...+a_n\geq \left(n-k\right)\cdot\dfrac{\left(\dfrac{n+1}{4}\right)}{k+1} = \dfrac{\left(n+1\right)\left(n-k\right)}{4\left(k+1\right)}$.
+		
+		Hence,
+		
+		$\left(1-a_{k+1}\right)+\left(1-a_{k+2}\right)+...+\left(1-a_n\right)$
+		$=\left(n-k\right)-\left(a_{k+1}+a_{k+2}+...+a_n\right)\leq\left(n-k\right)-\dfrac{\left(n+1\right)\left(n-k\right)}{4\left(k+1\right)}$.
+		
+		Thus, in order to show that $\left(1-a_{k+1}\right)+\left(1-a_{k+2}\right)+...+\left(1-a_n\right)\leq\dfrac{n+1}{4}$, it will be enough to prove that $\left(n-k\right)-\dfrac{\left(n+1\right)\left(n-k\right)}{4\left(k+1\right)}\leq\dfrac{n+1}{4}$.\\
+		This, however, is straightforward\\
+		
+		\begin{align*}
+			\left(n-k\right)-\dfrac{\left(n+1\right)\left(n-k\right)}{4\left(k+1\right)} 
+				 & \leq\dfrac{n+1}{4}
+		\end{align*}
+		Therefore,
+		\begin{align*}
+			 n-k & \leq\dfrac{n+1}{4}+\dfrac{\left(n+1\right)\left(n-k\right)}{4\left(k+1\right)}\\
+				 &\leq\dfrac{n+1}{4}\left(1+\dfrac{n-k}{k+1}\right)\\
+				 & \leq\dfrac{n+1}{4}\cdot\dfrac{n+1}{k+1}\\
+				 & \leq\left(\dfrac{n+1}{2}\right)^2\cdot\dfrac{1}{k+1}\\
+			\left(n-k\right)\left(k+1\right)&\leq\left(\dfrac{n+1}{2}\right)^2
+		\end{align*}
+		
+		But this is clear from AM-GM: $\left(n-k\right)\left(k+1\right)\leq\left(\dfrac{\left(n-k\right)+\left(k+1\right)}{2}\right)^2 = \left(\dfrac{n+1}{2}\right)^2$.
+		
+		So we have proved the inequality $\left(1-a_{k+1}\right)+\left(1-a_{k+2}\right)+...+\left(1-a_n\right)\leq\dfrac{n+1}{4}$. Together with $a_1+a_2+...+a_k\leq\dfrac{n+1}{4}$, this shows that if we choose the numbers $a_1$, $a_2$, ..., $a_k$ from the first row and the numbers $1-a_{k+1}$, $1-a_{k+2}$, ..., $1-a_n$ from the second row, then the sum of the chosen numbers in each row is $\leq\dfrac{n+1}{4}$. And the problem is solved.
+		
+	\end{solution}
+	
+	\newpage
+	
+	\section{Mock Exam 1}
+	
+	\begin{problem}
+		Let $ABC$ be a triangle. The points $K, L$ and $M$ lie on the segments $BC, CA$ and $AB$ respectively such that the lines $AK, BL$ and $CM$ intersect in a common point. Prove that it is possible to choose two of the triangles $ALM, BMK$ and $CKL$ whose inradius sum up to at least the inradius of the triangle $ABC$.
+	\end{problem}
+	\begin{solution}
+		 Denote $a=\dfrac{BK}{CK},b=\dfrac{CL}{AL},c=\dfrac{CM}{AM}$
+		 By Ceva's theorem, $abc=1$, so we may, without loss of generality, assume that $a\geq1$. Then at
+		 least one of the numbers $b$ or $c$ is not greater than $1$. Therefore at least one of the pairs $(ab),
+		 (b,c)$ has its first component not less than $1$ and the second one not greater than $1$. Without
+		 loss of generality, assume that $1\leq a$ and $b\leq 1$.
+		 Therefore, we obtain $bc\leq 1$ and $1\leq ca$, or equivalently
+		 \begin{center} 
+		 	$\dfrac{AM}{MB}\leq \dfrac{LA}{CL}$ and $\dfrac{MB}{AM}\leq {BK}{KC}$ .
+		 \end{center}
+		 The first inequality implies that the line passing through $M$ and parallel to $BC$ intersects the
+		 segment AL at a point $X$ (see Figure 1). Therefore the inradius of the triangle $ALM$ is not
+		 less than the inradius $r_1$ of triangle $AMX$.
+		 Similarly, the line passing through $M$ and parallel to $AC$ intersects the segment $BK$ at
+		 a point $Y$ , so the inradius of the triangle $BMK$ is not less than the inradius $r_2$ of the triangle
+		 BMY . Thus, to complete our solution, it is enough to show that $r_1+r_2\geq r$, where $r$ is
+		 the inradius of the triangle $ABC$. We prove that in fact $r_1+r_2=r$.
+		 
+		 Since $MX\parallel BC$, the dilation with centre $A$ that takes $M$ to $B$ takes the incircle of the
+		 triangle $AMX$ to the incircle of the triangle $ABC$. Therefore
+		 \begin{center}$\dfrac{r_1}{r}=\dfrac{AM}{AB}$ and similarly $\dfrac{r_2}{r}=\dfrac{BM}{AB}$
+		 	
+		 	
+		 \end{center}
+		 Adding these equalities gives $r_1+r_2=r$, as required.
+		\end{solution}
+		 
+	
+	\begin{problem}
+		We have $2^m$ sheets of paper with the number $1$ written on each of them. We perform the following operation. In every step, we choose two distinct sheets. If the two numbers on the two sheets are $a$ and $b$, then we erase the numbers and write the number $a+b$ on both sheets. Prove that after $m2^{m-1}$ steps that the sum of the numbers on all of the sheets is at least $4^m$.
+	\end{problem}
+	\begin{solution}
+		 consider an operation that we erase $a,b$ and write $a+b$ instead of them. let $S$ be the sum of other sheets(other than $a,b$) then the sum of all the sheets is $2a+2b+S$. without loss of generality we can erase $a,b$ and replace them by $2a,2b$; the sum of the sheets after this operation is also $2a+2b+S$ so we can do this operation instead of the original operation (because only the sum of the sheets is important for us). thus after $m2^{m-1}$ operations the numbers $2^{k_1},2^{k_2},\cdots ,2^{k_{2^m}}$ are written on the sheets where $\sum_{i=1}^{2^m} k_i=m2^m$ so using AM-GM inequality we get $2^{k_1}+2^{k_2}+\cdots +2^{k_{2^m}}\ge \sqrt[2^m]{2^{\sum_{i=1}^{2^m} k_i}}=4^m$
+	\end{solution}
+	
+	\begin{problem}
+		Find all triples $(p, x, y)$ consisting of a prime number $p$ and two positive integers $x$ and $y$ such that
+		$x^{p-1} + y$ and $x + y^{p-1}$ are both powers of $p$.
+	\end{problem}
+	
+	\begin{solution}
+		 Set $x^{p-1}+y=p^a$, $x+y^{p-1}=p^b$. If $p=2$, then $x+y=2^a=2^b$, so $x+y$ is any power of $2$. Now assume $p>2$.
+		 Notice that both $a,b\geq1$ since $x,y$ are positive integers. Now by Fermat, the second number is either congruent to $x$ or $x+1$ modulo $p$, depending on if $p|y$. If $p|y$, we get that $p|x$, and if $p$ doesn't divide $y$, then $x\equiv-1\pmod{p}$ which implies that $y\equiv-1\pmod{p}$ too. So we have two cases.
+		 
+		 Case 1: $x\equiv y\equiv0\pmod{p}$. Set $v_p(x)=m$ and $v_p(y)=n$. Since $m,n\geq1$ and $p>2$, we can't have both $m(p-1)=n$ and $n(p-1)=m$. WLOG suppose $m(p-1)\neq n$. Then we have $v_p(x^{p-1}+y)=\min(m(p-1),n)$, so $x^{p-1}+y=p^{\min(m(p-1),n)}$. But we have
+		 \[\min(x^{p-1},y)\geq\min(p^{m(p-1)},p^n)=p^{\min(m(p-1),n)}\]
+		 which is a contradiction. So there are no solutions in this case.
+		 Case 2: $x\equiv y\equiv-1\pmod{p}$. Set $k=\min(a,b)$. It is easy to see that $x\neq y$, since if $x=y$ then $x$ would divide a power of $p$, which we ruled out.
+		 Claim: $x+1$ and $y+1$ are multiples of $p^{k-1}$.
+		 Proof: We prove this for $x+1$; the proof for $y+1$ is similar. We have $y=p^a-x^{p-1}$, so
+		 \[x+(p^a-x^{p-1})^{p-1}=p^b\]
+		 Taken modulo $p^k$, the equation above becomes $p^k|x+(-x^{p-1})^{p-1}=x+x^{(p-1)^2}$ (since $p$ is odd). Since $p$ doesn't divide $x$, this reduces to $p^k|1+x^{p(p-2)}$. This is $v_p(x^{p(p-2)}+1)\geq k$; LTE reduces this to $v_p(x+1)\geq k-1$, which is what we wanted to show so we have proved the claim.
+		 
+		 Note that $x^{p-1}+y,x+y^{p-1}>1^{p-1}+p-1=p$, so we get that $a,b\geq2$ and thus $k\geq2$. Now, since $p^{k-1}|x+1$ and $p^{k-1}|y+1$, we get $x,y\geq p^{k-1}-1$, and thus
+		 \[(p^{k-1}-1)^{p-1}+p^{k-1}-1\leq p^k\]
+		 Claim: The above inequality must be false if $p\geq5$.
+		 Proof: This is quite boring and simple. We have
+		 $(p^{k-1}-1)^{p-1}+p^{k-1}-1 = (p^{k-1}-1)[(p^{k-1}-1)^{p-2}+1]>(p^{k-1}-1)[(p^{k-1}-1)^2+1]\geq(p^{k-1}-1)[p^{k-1}+2]$
+		 which is equal to $p^{2k-2}+p^{k-1}-2$. Now $p^{2k-2}\geq p^k$ and $p^{k-1}>2$, so $p^{2k-2}+p^{k-1}-2>p^k$ as desired.
+		 
+		 Thus $p=3$, so $(3^{k-1}-1)^2+3^{k-1}-1\leq3^k$.
+		 Claim: The above inequality must be false if $k\geq3$.
+		 Proof: This is also pretty simple. The LHS of the above is $3^{2k-2}-3^{k-1}=3^{k-1}(3^{k-1}-1)\geq3^{k-1}(8)>3^k$.
+		 
+		 Thus $p=3$ and $k=2$, so we have one of $x^2+y$ and $x+y^2$ equal to $9$. The only solution of $x^2+y=9$ with $3|x+1$ and $3|y+1$ is $(x,y)=(2,5)$; in this case we do have $2+5^2=27=3^3$. If $x+y^2=9$, we get $(x,y)=(5,2)$.
+		 
+		 So the only solutions are $(2,x,y)$, $(3,2,5)$ and $(3,5,2)$, where $x+y$ is any power of $2$.
+	\end{solution}
+	
+	\section{Mock Exam 2}
+	\begin{problem}
+		Let $\Omega$ and $O$ be the circumcircle and the circumcentre of an acute-angled triangle $ABC$ with $AB > BC$. The angle bisector of $\angle ABC$ intersects $\Omega$ at $M \ne B$. Let $\Gamma$ be the circle with diameter $BM$. The angle bisectors of $\angle AOB$ and $\angle BOC$ intersect $\Gamma$ at points $P$ and $Q,$ respectively. The point $R$ is chosen on the line $P Q$ so that $BR = MR$. Prove that $BR\parallel AC$
+	\end{problem}
+	\begin{solution}
+		Let $X$ $=$ $\Gamma$ $\cup$ $MO$, and let $D,E$ be the midpoints of $BC$ and $AB$ respectively. Let $T$ be the midpoint of $BM$. Since $BM$ is a diameter of $\Gamma$ $\implies$ $MOX$ $\perp$ $BX$ $\implies$ $BX$ $\parallel$ $AC$. Observe that $E,T,D$ are the midpoints of chords of $\Omega$ with center $O$ .$\implies$ $OE$ $\perp$ $BE$ , $OT$ $\perp$ $BT$ and $BD$ $\perp$ $OD$. Therefore, $E,O,T,D$ and $B$ are cyclic 
+		
+		From the above result $\angle$$EOR$$=$$\angle$$EBT$$=$$\angle$$TBC$$=$$\angle$$TOD$ $\implies$ $T$ lies on the external angle bisector of $POQ$. On the other hand, $T$ $\epsilon$ perpendicular bisector of $PQ$. Hence $P,O,T,Q$ are cyclic. Hence $R$ is the radical center of $\odot$($POTQ$), $\odot$($BXEOTD$) and $\Gamma$. $\implies$ $B,X,R$ are collinear. So, $BR$ $\parallel$ $AC$ and we are done
+	\end{solution}
+	
+	\begin{problem}
+		Define the function $f:(0,1)\to (0,1)$ by \[\displaystyle f(x) = \left\{ \begin{array}{lr} x+\frac 12 & \text{if}\ \  x < \frac 12\\ x^2 & \text{if}\ \  x \ge \frac 12 \end{array} \right.\] Let $a$ and $b$ be two real numbers such that $0 < a < b < 1$. We define the sequences $a_n$ and $b_n$ by $a_0 = a, b_0 = b$, and $a_n = f( a_{n -1})$, $b_n = f (b_{n -1} )$ for $n > 0$. Show that there exists a positive integer $n$ such that \[(a_n - a_{n-1})(b_n-b_{n-1})<0.\]
+	\end{problem}
+	
+	\begin{solution}
+		Suppose that the conclusion is false, and let $g(n)=b_n-a_n$.
+		If $a_i,b_i<\dfrac{1}{2}$, we have $$g(i+1)=b_{i+1}-a_{i+1}=\left (b_i+\dfrac{1}{2} \right )-\left ( a_i+\dfrac{1}{2} \right )= g(i)$$
+		If $a_i,b_i\ge \dfrac{1}{2}$, we have $$g(i+1)=b_i^2-a_i^2=(b_i-a_i)(b_i+a_i)=g(i)(b_i-a_i+2a_i)\ge g(i)(g(i)+1)\ge g(i)(g(0)+1)$$
+		
+		Because $a_i,b_i\ge \dfrac{1}{2}$ for infinitely many $i$, we have that for any $n\in \mathbb{N}$, we find $k$ such that $g(k)\ge g(0)(g(0)+1)^n$. As $g(0)(g(0)+1)^n$ doesn't have any upperbound, we have reached a contradiction.
+	\end{solution}
+	
+	\begin{problem}
+		Let $n$ points be given inside a rectangle $R$ such that no two of them lie on a line parallel to one of the sides of $R$. The rectangle $R$ is to be dissected into smaller rectangles with sides parallel to the sides of $R$ in such a way that none of these rectangles contains any of the given points in its interior. Prove that we have to dissect $R$ into at least $n + 1$ smaller rectangles.
+	\end{problem}
+	
+	\begin{solution}
+		Notice that there must be at least $n$ line segments inside the big rectangle.
+			\begin{lemma}
+				Each vertical/horizontal line segment inside the big rectangle must "stop" at 2 horizontal/vertical segments.
+			\end{lemma}
+			
+			\begin{proof}
+				The only way a line segment does not "stop" at two other horizontal segments is if two perpendicular segments "stop" when they meet. However, this is not possible as there is no way to "rectangulate" the region if this happens, so the lemma is true.
+				
+			\end{proof}
+		Thus, for each vertical/horizontal segment, there are 2 corners. The total number of corners is then at least $4n$ plus the four corners on the big rectangle for a total of $4n+4$. However, each rectangle has 4 corners for a total of at least $n+1$ rectangles, as desired.
+	\end{solution}
+
+\end{document}

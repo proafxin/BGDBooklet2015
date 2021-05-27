@@ -1,0 +1,76 @@
+\documentclass{subfile}
+
+\begin{document}
+	\section{Exam One}
+	
+	\begin{problem}
+		Find the number of $k$ tuples $(a_1,...,a_k)$ with $1\leq a_i\leq n$ so that their greatest common divisor with $n$ is $1$ i.e. $(a_1,...,a_k,n)=1$.
+	\end{problem}
+	
+	\begin{solution}
+		We will use \textbf{Principle of Inclusion and Exclusion}. Our idea is to do the exact opposite of what's asked. We will count the number of tuples which have a $\gcd$ greater than $1$. Then we will subtract that from the total number of ordered tuples possible. There are $n^k$ ordered tuples with $1\leq a_i\leq n$. 
+		
+		Let $p$ be a prime divisor of $n$.
+	\end{solution}
+	
+	\begin{problem}
+		Let $1\leq k\leq n$. Consider all sequences of positive integers with sum $n$. If the term appears $\mathcal{F}(n,k)$ times, find $\mathcal{F}(n,k)$ in terms of $n$ and $k$.
+	\end{problem}
+	
+	\begin{problem}
+		A \textit{lattice point }is a point with integer coordinates. There is a block in every lattice point. Decide if there are $100$ lattice points $P_1,...,P_{100}$ so that 
+		\begin{itemize}
+			\item $P_i$ is visible to $P_{i+1}$ for $1\leq i<99$.
+			\item $P_1$ is visible to $P_{100}$.
+			\item $P_i$ is not visible to $P_j$ is $|j-i|>1$.
+		\end{itemize}
+	\end{problem}
+	
+	\newpage
+	
+	\section{Geometry}
+	
+	\newpage
+	
+	\section{Number Theory}
+	
+	\newpage
+	
+	\section{Combinatorics}
+	
+	\begin{problem}
+		There are $n$ cars, numbered from $1$ to $n$ and a row with $n$ parking spots, numbered from $1$ to $n$. Each car $i$ has its favorite parking spot $a_i$. When it is its time to park, it goes to its favorite parking spot. If it is free, it parks and if it is taken, it advances until the next free parking spot and parks there. If it cannot find a parking spot this way, it leaves and never
+		comes back. First car $1$ tries to park, then car number $2$ tries to park and so on until car number $n$. Find the number of lists of favorite spots $a_1, ..., a_n$ such that all the cars park. Note, different cars may have the same favorite spot.
+	\end{problem}
+	
+	\begin{problem}
+		Given a $2007$-gon, find the smallest integer $k$ such that among any $k$ vertices of the polygon
+		there are $4$ vertices with the property that the convex quadrilateral they form share $3$ sides
+		with the polygon.
+	\end{problem}
+	
+	\begin{problem}
+		The entries of a $2 \times n$ matrix are positive real numbers. The sum of the numbers in each of the $n$ columns sum to $1$. Show that we can select one number in each column such that the sum of the selected numbers in each row is at most $\dfrac{n+1}{4}$.
+	\end{problem}
+	
+	\newpage
+	
+	\section{Mock Exam $1$}
+	
+	\begin{problem}
+		Let $ABC$ be a triangle. The points $K, L$ and $M$ lie on the segments $BC, CA$ and $AB$ respectively such that the lines $AK, BL$ and $CM$ intersect in a common point. Prove that it is possible to choose two of the triangles $ALM, BMK$ and $CKL$ whose inradius sum up to at least the inradius of the triangle $ABC$.
+	\end{problem}
+	
+	\begin{problem}
+		We have $2^m$ sheets of paper with the number $1$ written on each of them. We perform the following operation. In every step, we choose two distinct sheets. If the two numbers on the two sheets are $a$ and $b$, then we erase the numbers and write the number $a+b$ on both sheets. Prove that after $m2^{m-1}$ steps that the sum of the numbers on all of the sheets is at least $4^m$.
+	\end{problem}
+	
+	\begin{problem}
+		Find all triples $(p, x, y)$ consisting of a prime number $p$ and two positive integers $x$ and $y$ such that
+		$x^{p-1} + y$ and $x + y^{p-1}$ are both powers of $p$.
+	\end{problem}
+	\newpage
+	
+	\section{Mock Exam $2$}
+	
+\end{document}

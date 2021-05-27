@@ -1,0 +1,137 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{mystyle}
+
+\RequirePackage{amsthm, amsfonts, amssymb, amsmath,  titlesec, color, graphicx, fullpage, float, wasysym, titling, enumerate}
+
+\RequirePackage[T1]{fontenc}
+%\RequirePackage[utf8]{inputenc}
+\RequirePackage[english]{babel}
+\usepackage{mdframed}
+\usepackage{lipsum, tcolorbox}
+
+\RequirePackage[colorlinks=true,
+linkcolor=webgreen,
+filecolor=webbrown,
+citecolor=webgreen]{hyperref}
+
+\usepackage{fullpage}
+\usepackage{float, framed}
+
+\setlength{\textwidth}{6.5in}
+\setlength{\oddsidemargin}{.1in}
+\setlength{\evensidemargin}{.1in}
+\setlength{\topmargin}{-.1in}
+\setlength{\textheight}{8.4in}
+
+\definecolor{webgreen}{rgb}{0,.5,0}
+\definecolor{webbrown}{rgb}{.6,0,0}
+
+\RequirePackage[left=.5 in, right = .5 in, includefoot]{geometry}
+
+\setlength{\textwidth}{6.5in}
+\setlength{\oddsidemargin}{.1in}
+\setlength{\evensidemargin}{.1in}
+\setlength{\topmargin}{-.1in}
+\setlength{\textheight}{8.4in}
+
+\titleformat{\section}	{\vspace{.3 in}\centering\Large\bf}{\thesection.}{1.5em}{}
+
+%\setmainfont{Georgia}
+
+%define theorems definitions and remarks
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{observation}{Observation}
+\newtheorem{fact}{Fact}
+\newtheorem{identity}{Identity}
+
+\theoremstyle{definition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{notation}{Notation}
+\newtheorem{problem}{Problem}
+\newtheorem*{question}{Question}
+\newtheorem*{acknowledgement}{Acknowledgement}
+\newtheorem*{remark}{Remark}
+\newtheorem*{note}{Note}
+\newtheorem*{solution}{Solution}
+
+\theoremstyle{remark}
+\newtheorem*{hint}{Hint}
+\newtheorem*{example}{Example}
+
+
+\numberwithin{equation}{section}
+\numberwithin{problem}{section}
+\numberwithin{corollary}{section}
+\numberwithin{theorem}{section}
+\numberwithin{lemma}{section}
+%\numberwithin{notation}{section}
+\numberwithin{fact}{section}
+\numberwithin{proposition}{section}
+\numberwithin{definition}{section}
+\numberwithin{identity}{section}
+
+%undefined macros defined
+\newcommand{\g}{\gamma}
+\newcommand{\e}{\epsilon}
+\newcommand{\p}{\phi}
+\newcommand{\s}{\sigma}
+\newcommand{\z}{\zeta}
+\newcommand{\w}{\omega}
+
+
+
+%override already defined macros
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\c}{\chi}
+\renewcommand{\d}{\delta}
+\renewcommand{\t}{\theta}
+\renewcommand{\i}{\infty}
+\renewcommand{\k}{\kappa}
+\renewcommand{\l}{\lambda}
+\renewcommand{\o}{\omega}
+\renewcommand{\r}{\rho}
+\renewcommand{\t}{\varphi}
+\renewcommand{\u}{\upsilon}
+
+
+\renewcommand{\L}{\Lambda}
+
+%define var commands
+\newcommand{\E}{\varepsilon}
+\newcommand{\vp}{\varphi}
+\newcommand{\T}{\vartheta}
+
+\newcommand{\N}{\mathbb{N}}
+%define custom commands
+\newcommand{\lcm}{\mbox{lcm}}
+\newcommand{\ord}{\mbox{ord}}
+
+
+
+%\font\bv=BaskervilleOldFace
+%\font\sr=SiyamRupali
+%\font\gr=Garamond
+%\font\gg=Georgia
+
+\newenvironment{dedication}
+  {\clearpage           % we want a new page
+   \thispagestyle{empty}% no header and footer
+   \vspace*{\stretch{1}}% some space at the top
+   \itshape% the text is in italics
+   \raggedleft          % flush to the right margin
+  }
+  {\par % end the paragraph
+   \vspace{\stretch{3}} % space at bottom is three times that at the top
+   \clearpage           % finish off the page
+  }
+  
+%\newenvironment{edition}{\Large\it}{\itshape\raggedleft}
+%\newenvironment{thetitle}{\centering\Huge\bfseries}{\par}
+%\newenvironment{theauthor}{\Large\itshape\centering|}{\vspace*{.1in}}
+
+\endinput

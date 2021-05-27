@@ -1,0 +1,45 @@
+\documentclass[12pt, oneside,leqno]{book}
+
+%\usepackage{gfsartemisia-euler}
+\usepackage{tikz}
+\usepackage{mystyle, subfiles, url}
+\usepackage{wasysym}
+%\usepackage{times}
+
+\usepackage{pgf,tikz}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\definecolor{uuuuuu}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
+\definecolor{qqqqff}{rgb}{0.,0.,1.}
+\definecolor{cqcqcq}{rgb}{0.7529411764705882,0.7529411764705882,0.7529411764705882}
+
+\begin{document}
+	\frontmatter
+	\title{\bf\Huge  10th\\ Bangladesh Mathematical Olympiad:\\Selected Problems and Solutions}
+	\author{Editor:\quad\sl Masum Billal\and
+		Special Thanks:\\Nur Muhammad Shafiullah\\Md Sanzeed Anwar\\ Asif-E-Elahi\\Nayeemul Islam Swad% orofe Ganzeed orofe ganzalf 
+	}
+	\date{}
+	\maketitle
+		\subfile{intro.tex}
+	
+	\mainmatter
+	
+	\newpage
+	\chapter{National Olympiad Problems}
+		\subfile{national.tex}
+	\chapter{National Math Camp}
+		\subfile{main-camp.tex}
+	\chapter{Extension Camp}
+		\subfile{ext.tex}
+	
+	
+	%\chapter{Problems Used In IMO Camp Training}
+	
+	\begin{thebibliography}{99}
+		\bibitem{masum} Masum Billal, \textsl{Remarks On General Fibonacci Numbers}, \url{https://arxiv.org/pdf/1502.06869v1.pdf}
+		\bibitem{amir} Amir Hossein Parvardi, \textsl{Lifting The Exponent, Version $6$},
+			\url{http://s3.amazonaws.com/aops-cdn.artofproblemsolving.com/resources/articles/lifting-the-exponent.pdf}
+	\end{thebibliography}
+	
+\end{document}
